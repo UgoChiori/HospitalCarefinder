@@ -13,7 +13,7 @@ interface SigninFormProps {
   signIn: () => void;
 }
 
-const Login: React.FC<SigninFormProps> = ({ signIn }) => {
+const Login: React.FC<SigninFormProps> = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

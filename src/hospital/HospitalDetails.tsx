@@ -1,6 +1,5 @@
 import React from "react";
-// import HospitalCard from "./Card";
-// import { CSVLink } from "react-csv";
+import { CSVLink } from "react-csv";
 import "./hospitaldetails.css";
 
 
@@ -62,7 +61,7 @@ const HospitalDetails: React.FC<Props> = ({
       <div id="hospital_card_details_share">
         <button onClick={handleShare}>Share</button>
         
-        {/* <CSVLink data={hospitalData}  className="csv">Download </CSVLink> */}
+        <CSVLink data={hospitalData}  className="csv">Download </CSVLink>
       </div>
 
       
