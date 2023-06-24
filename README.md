@@ -1,4 +1,4 @@
-### HospitalCarefinder
+
 # Hospital Carefinder
 
 Hospital Carefinder is a web application built using Vite, React, and Typescript. It provides a user-friendly interface for finding hospitals near the user's location using the Google Places API. The project also integrates Firebase authentication and storage for user authentication and data sharing.
