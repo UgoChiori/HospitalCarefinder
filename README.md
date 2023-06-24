@@ -31,7 +31,7 @@ Hospital Carefinder is a web application built using Vite, React, and Typescript
 2. Install the dependencies:
 
    bash
-   cd hospital-carefinder
+   cd hospitalcarefinder
    npm install
    
 
@@ -47,7 +47,7 @@ Hospital Carefinder is a web application built using Vite, React, and Typescript
    npm run dev
    
 
-5. Open your browser and navigate to [http://localhost:3000](http://localhost:3000) to access the Hospital Carefinder application.
+5. Open your browser and navigate to [http://localhost:5173](http://localhost:5173) to access the Hospital Carefinder application.
 
 ## Usage
 
@@ -67,4 +67,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 
 
-Feel free to modify the content and structure according to your project's specific details.
+
