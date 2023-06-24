@@ -1,0 +1,77 @@
+#hospital_card_details_container{
+
+    background: url(../photos/background.jpg);
+    background-repeat: no-repeat;
+    height: 100vh;
+     display: flex;
+      justify-content: center;
+      align-items: center;
+  
+  }
+   .details-card{
+  
+    background: #441673;
+    width: 50%;
+    margin-top: 2.5rem;
+    padding: 1rem;
+    border-radius: 5px;
+    color: #fff;
+    text-align: center; 
+    height:50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
+    transition: all 0.3s ease-in-out;
+  
+   }
+  
+    .details-card:hover{
+      transform: scale(1.1);
+      box-shadow: 0 0 20px 0 rgba(0,0,0,0.3);
+    }
+  
+    .formatted_address {
+   
+      padding: 1rem;
+      border-radius: 5px;
+      margin-top: 1rem;
+      width: 100%;
+      text-align: center;
+      font-size: 1rem;
+      color: #fff;
+    }
+  
+   .biz-status{
+  
+    font-size: 1.2rem;
+   }
+  
+   #hospital_card_details_share{
+    border: 1px solid black;
+    margin-top: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   }
+  
+  
+   @media screen and (max-width: 768px) {
+    .details-card{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    }
+    #hospital_card_details_share{
+      display: block;
+      background-color: #441673;
+      width: 40%;
+      
+    }
+   }
