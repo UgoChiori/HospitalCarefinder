@@ -2,6 +2,7 @@ import express from "express";
 import * as dotenv from "dotenv";
 import cors from "cors";
 import fetch from "node-fetch";
+import process from "process";
 
 const app = express();
 dotenv.config;
