@@ -310,25 +310,26 @@ body {
   }
   
   @media screen and (max-width: 991px) {
-    .hospitals-grid > * {
+    .hospitals-grid {
+        display: grid;
       grid-template-columns: repeat(2, 1fr);
+      grid-gap: 1.5rem;
     }
   
     .search-input {
-      
-
-          width: 80%;
+       width: 80%;
       }
       
       .container {
           height: auto;
-          min-height: 100vh;
+          min-height: 30vh;
           padding: 2rem;
       }
       
       .hospital-card-title {
           font-size: 1.2rem;
           margin-top: 1rem;
+         
       }
       
       .hospital-card-details {
@@ -336,9 +337,14 @@ body {
           margin-top: 1rem;
       }
     }
+
+
+
       @media screen and (max-width: 767px) {
-          .hospitals-grid >  {
+          .hospitals-grid  {
+            display: grid;
               grid-template-columns: 1fr;
+              grid-gap: 1rem;
           }
           
           .search-input {
