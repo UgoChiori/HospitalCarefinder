@@ -38,6 +38,7 @@ function App() {
 
   // Google signup
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const signUp = () => {
     signUp();
   };

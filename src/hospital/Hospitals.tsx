@@ -65,25 +65,24 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
 
   const handleLocationPermissionResponse = (allowPermission: any) => {
     if (allowPermission) {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
-        console.log(latitude, longitude);
-        const url = `http://localhost:9090/api/maps/place?latitude=${latitude}&longitude=${longitude}&radius=30000`;
-        axios.get(url).then((response) => {
-          console.log(response);
-          setTestHospitals(response.data.results);
-        });
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          console.log(latitude, longitude);
+          const url = `http://localhost:9090/api/maps/place?latitude=${latitude}&longitude=${longitude}&radius=30000`;
+          axios.get(url).then((response) => {
+            console.log(response);
+            setTestHospitals(response.data.results);
+          });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
     } else {
       setShowLocationPopup(false);
     }
-    
   };
 
   useEffect(() => {
@@ -116,9 +115,8 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
             console.log("Permission denied");
           }
         });
-    } 
+    }
   }, []);
-
 
   // SEARCH HOSPITALS
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
