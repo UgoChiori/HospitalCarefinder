@@ -6,7 +6,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import "firebase/app";
 import { FaWhatsapp, FaEnvelope, FaLink } from "react-icons/fa";
 import MapContainer from "../pages/MapContainer";
-import { Carousel } from "react-responsive-carousel";
+// import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 // import LocationPermissionPopup from "../components/LocationPermissionPopup";
 
