@@ -162,6 +162,10 @@ body {
     .search-input {
         width: 100%;
     }
+    .carousel {
+        max-width: 400px;
+
+    }
 }
 
 /* Responsive Styles for Smaller screens */
