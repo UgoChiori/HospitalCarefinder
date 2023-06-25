@@ -2,7 +2,11 @@ import express from "express";
 import * as dotenv from "dotenv";
 import cors from "cors";
 import fetch from "node-fetch";
-import process from "process";
+// import process from "process";
+
+
+// eslint-disable-next-line no-undef
+var process = NodeJS.process
 
 const app = express();
 dotenv.config;
@@ -41,6 +45,7 @@ app.get("/api/maps/place/next", async (req, res) => {
 
 app.get("/api/maps/place/details", async (req, res) => {
   const { place_id } = req.query;
+
   const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${place_id}&fields=address_components,business_status,formatted_address,icon,icon_mask_base_uri,delivery,dine_in,icon_background_color,name,photo,place_id,plus_code,type,url,utc_offset,vicinity,reviews,formatted_phone_number,opening_hours,website,curbside_pickup,reservable,serves_brunch,serves_dinner,serves_lunch,wheelchair_accessible_entrance&key=${process.env.GOOGLE_MAPS_API_KEY}`;
 
   try {
@@ -107,7 +112,7 @@ app.get("/api/doctors", async (req, res) => {
 
 
 
-app.listen(9090, () => {
+app.listen(process.env.PORT || 9090, () => {
   console.log(`Server is listening on port 9090`);
 });
 
