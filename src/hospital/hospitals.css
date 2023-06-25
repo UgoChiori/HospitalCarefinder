@@ -164,6 +164,14 @@ body {
     }
     .carousel {
         max-width: 400px;
+        margin: 0 auto;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        background-color: #441673
+
 
     }
 }
@@ -182,6 +190,13 @@ body {
 
     .carousel {
         max-width: 400px;
+        margin: 0 auto;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #441673
 
     }
 }
