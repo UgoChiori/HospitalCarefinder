@@ -68,7 +68,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/hospitals" element={<Hospitals handleDetails={handleDetails} />} />
-        <Route path='/hospitaldetails' element={<HospitalDetails name={''} status={''} rating={''} details={details} vicinity={''} opening_hours={false}/>} /> 
+        <Route path='/hospitaldetails' element={<HospitalDetails name={''} business_status={''} rating={''} details={details} vicinity={''} opening_hours={false}/>} /> 
         <Route path="/signin" element={<Login  signIn={signIn} />} />
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFoundPage />} />
