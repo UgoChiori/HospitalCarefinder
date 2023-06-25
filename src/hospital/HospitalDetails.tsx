@@ -2,47 +2,75 @@ import React from "react";
 import { CSVLink } from "react-csv";
 import "./hospitaldetails.css";
 
-
-
-
 type Props = {
   name: string;
-  status: any;
+  business_status: any;
   rating: string;
   details: any;
- vicinity: string;
+  vicinity: string;
   opening_hours: boolean;
- 
- 
 };
 
 const HospitalDetails: React.FC<Props> = ({
   name,
-  status,
+  business_status,
   vicinity,
   rating,
   details,
   opening_hours,
- 
-  
 }: Props) => {
-  
-
   const hospitalData = [
-    { name, status, rating, vicinity, opening_hours },
+    {
+      name: name,
+      business_status: business_status,
+      rating: rating,
+      vicinity: vicinity,
+      opening_hours: opening_hours,
+    },
+
+    
   ];
 
+  // const handleShare = () => {
+  //   if (navigator.share) {
+  //     navigator
+  //       .share({
+  //         title: "Hospital Details",
+  //         text: `Name: ${name}, Status: ${business_status}, Rating: ${rating}, Vicinity: ${vicinity}, Opening Hours: ${opening_hours}`,
+  //       })
+  //       .then(() => console.log("Successful share"))
+  //       .catch((error) => console.log("Error sharing", error));
+
+  //   } else {
+  //     console.log("Web share not supported");
+  //     alert("Web share not supported, please use a different browser");
+  //   }
+  // };
 
   const handleShare = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: name,
-        text: `Check out the details of ${name}`,
-      
-        url: window.location.href,
-        
+    const shareData = {
+      title: "Hospital Details",
+      text: `Name: ${name}, Status: ${business_status}, Rating: ${rating}, Vicinity: ${vicinity}, Opening Hours: ${opening_hours}`,
+      url: window.location.href,
+    };
+
+    // CALL API ENDPOINT TO SHARE THE DATA
+    fetch("/api/maps/place/share", {
+      method: "POST",
+      body: JSON.stringify(shareData),
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        alert("Data shared successfully");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("Error sharing data");
       });
-    } 
   };
 
   return (
@@ -52,25 +80,17 @@ const HospitalDetails: React.FC<Props> = ({
         <h2 className="biz-status">{details?.business_status}</h2>
         <p className="formatted_address">{details?.vicinity}</p>
         <h4 className="ratings">{details?.rating}</h4>
-       {details?.opening_hours && (
-          <p className="opening_hours">Open Now</p>
-       )}
-       
-       
+        {details?.opening_hours && <p className="opening_hours">Open Now</p>}
       </div>
       <div id="hospital_card_details_share">
-        <button onClick={handleShare}>Share</button>
-        
-        <CSVLink data={hospitalData}  className="csv">Download </CSVLink>
-      </div>
+        <button onClick={(handleShare)}>Share</button>
 
-      
+        <CSVLink data={(hospitalData)} className="csv">
+          Download{" "}
+        </CSVLink>
+      </div>
     </div>
   );
 };
 
 export default HospitalDetails;
-
-
-
-
