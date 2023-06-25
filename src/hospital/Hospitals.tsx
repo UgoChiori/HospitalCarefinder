@@ -268,30 +268,20 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
         {loading ? (
           <div className="loader">Loading...</div> // Show loading state
         ) : (
-          <div className="carousel">
-            <Carousel
-              showStatus={false}
-              showThumbs={false}
-              infiniteLoop={false}
-              autoPlay={true}
-              interval={5000}
-              transitionTime={1000}
-            >
-              {testHospitals?.map((_hospital: any, index: number) => {
-                return (
-                  <div key={index}>
-                    <HospitalCard
-                      name={_hospital.name}
-                      status={_hospital.business_status}
-                      rating={_hospital.rating}
-                      handleDetails={handleDetails}
-                      details={_hospital}
-                      formatted_address={_hospital.formatted_address}
-                    />
-                  </div>
-                );
-              })}
-            </Carousel>
+          <div className="hospitals-grid">
+            {testHospitals?.map((_hospital: any, index: number) => {
+              return (
+                <HospitalCard
+                  key={index}
+                  name={_hospital.name}
+                  status={_hospital.business_status}
+                  rating={_hospital.rating}
+                  handleDetails={handleDetails}
+                  details={_hospital}
+                  formatted_address={_hospital.formatted_address}
+                />
+              );
+            })}
           </div>
         )}
       </div>
