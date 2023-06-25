@@ -2,11 +2,6 @@ import express from "express";
 import * as dotenv from "dotenv";
 import cors from "cors";
 import fetch from "node-fetch";
-// import process from "process";
-
-
-// eslint-disable-next-line no-undef
-var process = NodeJS.process
 
 const app = express();
 dotenv.config;
