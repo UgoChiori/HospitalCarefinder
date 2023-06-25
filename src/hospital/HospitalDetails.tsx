@@ -35,7 +35,7 @@ const HospitalDetails: React.FC<Props> = ({
     },
   ];
   const [hospitalEntry, setHospitalEntry] = useState<HospitalEntry | null>(null);
-  const [existingContent, setExistingContent] = useState("");
+  const [existingContent] = useState("");
 
  const handleSaveEntry = (entry: HospitalEntry) => {
   setHospitalEntry(entry);
