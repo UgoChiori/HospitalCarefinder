@@ -571,7 +571,7 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [nextTokens, setNextTokens] = useState<any[]>([]);
   const [nextState, setNextState] = useState<boolean>(false);
-  const [pageUrl, setPageUrl] = useState<string[]>([
+  const [pageUrl] = useState<string[]>([
     "http://localhost:9090/api/maps/place?latitude=6.468137&longitude=3.638487&radius=30000",
     "http://localhost:9090/api/maps/place/next?nextpage=",
   ]);
