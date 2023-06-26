@@ -18,12 +18,33 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [nextTokens, setNextTokens] = useState<any[]>([]);
   const [nextState, setNextState] = useState<boolean>(false);
-  const [pageUrl] = useState<string[]>([
+  const [pageUrl, setPageUrl] = useState<string[]>([
     "http://localhost:9090/api/maps/place?latitude=6.468137&longitude=3.638487&radius=30000",
     "http://localhost:9090/api/maps/place/next?nextpage=",
   ]);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true); // Added loading state
+
+  const [userLocation, setUserLocation] = useState<any>({
+    latitude: 0,
+    longitude: 0,
+  });
+
+  useEffect(() => {
+    // Get user location
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setUserLocation({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+  , []);
 
   // SHARE VIA WHATSAPP
   const handleShare = () => {
@@ -56,7 +77,7 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
       .join("\n");
     const shareBody = `Check out these hospitals: \n${hospitalData}`;
 
-    const linkUrl = `https://mycarefinder.netlify.app/?subject=${encodeURIComponent(
+    const linkUrl = `https://hospital-carefinder.vercel.app/hospitals?subject=${encodeURIComponent(
       "Check out these hospitals"
     )}&body=${encodeURIComponent(shareBody)}`;
     window.open(linkUrl, "_blank");
