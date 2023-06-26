@@ -44,7 +44,7 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ content, onSave }) => {
     setEditorContent("");
   };
 
-  const imagesListRef = ref(storage, "images/");
+  const imagesListRef = ref(storage, "images/*");
   const uploadImage = () => {
     if (imageUpload == null) {
       return;
