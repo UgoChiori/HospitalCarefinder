@@ -3,6 +3,7 @@ import * as dotenv from "dotenv";
 import cors from "cors";
 import fetch from "node-fetch";
 import process from "process";
+import helmet from "helmet";
 
 
 
@@ -10,6 +11,7 @@ const app = express();
 dotenv.config;
 
 app.use(cors());
+app.use(helmet());
 
 app.get("/", (req, res) => {
   res.send("Server is running!");
