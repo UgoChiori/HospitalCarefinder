@@ -1,0 +1,60 @@
+.hospital-entry-container {
+    background: url(../photos/background.jpg);
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.text-area {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    color: black !important;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 1rem;
+    border: none;
+    outline: none;
+    resize: none;
+    overflow: auto;
+    box-shadow: 0 0 10px rgba(230, 17, 17, 0.1);
+}
+
+.markdown-editor-container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.add-entry,
+.preview {
+
+    color: #000;
+    border: none;
+    outline: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    text-align: center;
+}
+
+.markdown-button-container {
+display: flex;
+
+}
+
+.markdown-button{
+  margin-right: 10px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.nav-link{
+    color: black !important;
+}

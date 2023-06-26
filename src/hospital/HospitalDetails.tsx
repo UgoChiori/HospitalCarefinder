@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CSVLink } from "react-csv";
 import "./hospitaldetails.css";
-import MarkdownEditor from "../components/markdown/MarkdownSupport";
+import { NavLink } from "react-router-dom";
 
 type Props = {
   name: string;
@@ -11,11 +11,6 @@ type Props = {
   vicinity: string;
   opening_hours: boolean;
 };
-
-interface HospitalEntry {
-  title: string;
-  content: string;
-}
 
 const HospitalDetails: React.FC<Props> = ({
   name,
@@ -34,12 +29,8 @@ const HospitalDetails: React.FC<Props> = ({
       opening_hours: opening_hours,
     },
   ];
-  const [hospitalEntry, setHospitalEntry] = useState<HospitalEntry | null>(null);
-  const [existingContent] = useState("");
 
- const handleSaveEntry = (entry: HospitalEntry) => {
-  setHospitalEntry(entry);
- };
+  const [loading, setLoading] = useState(true);
 
   const handleShare = () => {
     const shareData = {
@@ -67,65 +58,38 @@ const HospitalDetails: React.FC<Props> = ({
       });
   };
 
-  const renderMarkdown = (markdown: string) => {
-    // Render the markdown into HTML using marked library
-    const html = (markdown);
-    return { __html: html };
-  };
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <div id="hospital_card_details_container">
-      <div className="details-card">
-        <h1>{details?.name}</h1>
-        <h2 className="biz-status">{details?.business_status}</h2>
-        <p className="formatted_address">{details?.vicinity}</p>
-        <h4 className="ratings">{details?.rating}</h4>
-        {details?.opening_hours && <p className="opening_hours">Open Now</p>}
+    <div>
+      <div id="hospital_card_details_container">
+        <div className="details-card">
+          <h1>{details?.name}</h1>
+          <h2 className="biz-status">{details?.business_status}</h2>
+          <p className="formatted_address">{details?.vicinity}</p>
+          <h4 className="ratings">{details?.rating}</h4>
+          {details?.opening_hours && <p className="opening_hours">Open Now</p>}
+        </div>
       </div>
-      <div id="hospital_card_details_share">
-        <button onClick={handleShare}>Share</button>
+
+      <div className="hospital-button-container">
+        <button className="hospital-button" onClick={handleShare}>Share</button>
 
         <CSVLink data={hospitalData} className="csv">
           Download{" "}
         </CSVLink>
-
-        {hospitalEntry && (
-          <div className="markdown-editor-container">
-            <h3>Create Hospital Entry</h3>
-            <MarkdownEditor
-              content={existingContent}
-              onSave={handleSaveEntry}
-            />
-          </div>
-)}
-
-        {hospitalEntry && (
-          <div className="markdown-editor-container">
-            <h3>Create Hospital Entry</h3>
-            <MarkdownEditor 
-            content={existingContent}
-             onSave={handleSaveEntry} />
-            </div>
-        )}
-         {hospitalEntry && (
-              <div className="markdown-preview-container">
-                <h3>Hospital Entry Preview</h3>
-                <div
-                  className="markdown-preview"
-                  dangerouslySetInnerHTML={renderMarkdown(
-                    hospitalEntry.content
-                  )}
-                >
-
-                </div>
       </div>
-    )}
-
-    </div>
+      <NavLink className="nav-link" to="/">
+        Back to Home
+      </NavLink>
     </div>
   );
 };
-
-
 
 export default HospitalDetails;

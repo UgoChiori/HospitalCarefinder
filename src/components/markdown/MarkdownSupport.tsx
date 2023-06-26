@@ -1,156 +1,11 @@
-// import React, { useState } from 'react';
-// import ReactMarkdown from 'react-markdown';
-
-// interface MarkdownEditorProps {
-//   onChange: (markdown: string) => void;
-// }
-
-// const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ onChange }) => {
-//   const [markdown, setMarkdown] = useState('');
-
-//   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-//     const { value } = event.target;
-//     setMarkdown(value);
-//     onChange(value);
-//   };
-
-//   return (
-//     <div>
-//       <textarea value={markdown} onChange={handleInputChange} rows={10} />
-//       <div>
-//         <h2>Preview</h2>
-//         <ReactMarkdown>{markdown}</ReactMarkdown>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default MarkdownEditor;
-
-
-// import React, { useState } from 'react';
-// import ReactMarkdown from 'react-markdown';
-
-// interface HospitalEntry {
-//   title: string;
-//   content: string;
-// }
-
-// interface MarkdownEditorProps {
-//   onSave: (entry: HospitalEntry) => void;
-// }
-
-// const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ onSave }) => {
-//   const [title, setTitle] = useState('');
-//   const [content, setContent] = useState('');
-
-//   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-//     setTitle(event.target.value);
-//   };
-
-//   const handleContentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-//     setContent(event.target.value);
-//   };
-
-//   const handleSave = () => {
-//     const entry: HospitalEntry = {
-//       title,
-//       content,
-//     };
-//     onSave(entry);
-//     setTitle('');
-//     setContent('');
-//   };
-
-//   return (
-//     <div>
-//       <h2>Create Hospital Entry</h2>
-//       <div>
-//         <label>Title:</label>
-//         <input type="text" value={title} onChange={handleTitleChange} />
-//       </div>
-//       <div>
-//         <label>Content:</label>
-//         <textarea value={content} onChange={handleContentChange} rows={10} />
-//       </div>
-//       <div>
-//         <h2>Preview</h2>
-//         <ReactMarkdown>{content}</ReactMarkdown>
-//       </div>
-//       <button onClick={handleSave}>Save Entry</button>
-//     </div>
-//   );
-// };
-
-// export default MarkdownEditor;
-
-
-// import React, { useState, useEffect } from 'react';
-// import ReactMarkdown from 'react-markdown';
-
-// interface HospitalEntry {
-//   title: string;
-//   content: string;
-// }
-
-// interface MarkdownEditorProps {
-//   existingContent: string;
-//   onSave: (entry: HospitalEntry) => void;
-// }
-
-// const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ existingContent, onSave }) => {
-//   const [title, setTitle] = useState('');
-//   const [content, setContent] = useState('');
-
-//   useEffect(() => {
-//     setContent(existingContent);
-//   }, [existingContent]);
-
-//   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-//     setTitle(event.target.value);
-//   };
-
-//   const handleContentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-//     setContent(event.target.value);
-//   };
-
-//   const handleSave = () => {
-//     const entry: HospitalEntry = {
-//       title,
-//       content,
-//     };
-//     onSave(entry);
-//     setTitle('');
-//     setContent('');
-//   };
-
-//   return (
-//     <div>
-//       <h2>Create Hospital Entry</h2>
-//       <div>
-//         <label>Title:</label>
-//         <input type="text" value={title} onChange={handleTitleChange} />
-//       </div>
-//       <div>
-//         <label>Content:</label>
-//         <textarea value={content} onChange={handleContentChange} rows={10} />
-//       </div>
-//       <div>
-//         <h2>Preview</h2>
-//         <ReactMarkdown>{content}</ReactMarkdown>
-//       </div>
-//       <button onClick={handleSave}>Save Entry</button>
-//     </div>
-//   );
-// };
-
-// export default MarkdownEditor;
-
-import React, { useState, useEffect } from 'react';
-import ReactMarkdown from 'react-markdown';
+import React, { useState, useEffect, ChangeEvent } from "react";
+import ReactMarkdown from "react-markdown";
+import { storage } from "../Firebase";
+import { getDownloadURL, listAll, ref, uploadBytes } from "firebase/storage";
+import { v4 as uuidv4 } from "uuid";
 
 interface HospitalEntry {
-  title: string;
+  name: string;
   content: string;
 }
 
@@ -160,47 +15,109 @@ interface MarkdownEditorProps {
 }
 
 const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ content, onSave }) => {
-  const [title, setTitle] = useState('');
-  const [editorContent, setEditorContent] = useState('');
+  const [name, setName] = useState("");
+  const [editorContent, setEditorContent] = useState("");
+  const [imageUpload, setImageUpload] = useState<File | null>(null);
+  const [imageURL, setImageURL] = useState<string[]>([]);
 
   useEffect(() => {
     setEditorContent(content);
   }, [content]);
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(event.target.value);
+    setName(event.target.value);
   };
 
-  const handleContentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleContentChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
     setEditorContent(event.target.value);
   };
 
   const handleSave = () => {
     const entry: HospitalEntry = {
-      title,
+      name,
       content: editorContent,
     };
     onSave(entry);
-    setTitle('');
-    setEditorContent('');
+    setName("");
+    setEditorContent("");
   };
+
+  const imagesListRef = ref(storage, "images/");
+  const uploadImage = () => {
+    if (imageUpload == null) {
+      return;
+    }
+    const imageRef = ref(storage, `images/${imageUpload.name}-${uuidv4()}`);
+    const uploadTask = uploadBytes(imageRef, imageUpload);
+
+    uploadTask
+      .then((snapshot) => {
+        return getDownloadURL(snapshot.ref);
+      })
+      .then((downloadURL) => {
+        setImageURL((prevURLs) => [...prevURLs, downloadURL]);
+        alert("Image Uploaded");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    listAll(imagesListRef).then((response) => {
+      response.items.forEach((item) => {
+        getDownloadURL(item).then((url) => {
+          setImageURL((prev) => [...prev, url]);
+        });
+      });
+    });
+  }, []);
 
   return (
     <div>
-      <h2>Create Hospital Entry</h2>
+      <h2 className="add-entry">Add Entry</h2>
       <div>
-        <label>Title:</label>
-        <input type="text" value={title} onChange={handleTitleChange} />
+        <label>Name:</label>
+        <input type="text" value={name} onChange={handleTitleChange} />
       </div>
       <div>
-        <label>Content:</label>
-        <textarea value={editorContent} onChange={handleContentChange} rows={10} />
+        <label>Address:</label>
+        <textarea
+          value={editorContent}
+          onChange={handleContentChange}
+          rows={10}
+          className="text-area"
+        />
       </div>
       <div>
-        <h2>Preview</h2>
+        <h2 className="preview">Preview</h2>
         <ReactMarkdown>{editorContent}</ReactMarkdown>
       </div>
-      <button onClick={handleSave}>Save Entry</button>
+      <div className="hospital-img">
+        <label>Image:</label>
+        <input
+          type="file"
+          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+            if (e.target.files && e.target.files.length > 0) {
+              setImageUpload(e.target.files[0]);
+            }
+          }}
+        />
+        
+        {imageURL.map((url) => (
+          <img src={url} alt="hospital" width={50} height={50} style={{borderRadius: "8px"}} />
+        ))}
+      </div>
+
+     <div className="markdown-button-container">
+     <button className="markdown-button" type="button" onClick={uploadImage}>
+          {" "}
+          Upload Image{" "}
+        </button>
+      <button className="markdown-button" onClick={handleSave}>Save Entry</button>
+     </div>
     </div>
   );
 };

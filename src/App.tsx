@@ -1,18 +1,18 @@
-import  { useEffect, useContext, useState } from 'react';
-import { Routes, Route} from 'react-router-dom';
-import HomePage from './landingpage/HomePage';
-import Login from './pages/Login';
-import Hospitals from './hospital/Hospitals';
-import HospitalDetails from './hospital/HospitalDetails';
-import Register from './pages/Register';
-import { ErrorFallback } from './components/Errorboundary/ErrorFallBack';
-import { ErrorBoundary } from 'react-error-boundary';
-import { AuthContext } from './context/AuthContext';
-import NavigationBar from './navigation/NavigationBar';
-import { auth, signOut, signInWithGoogle } from './components/Firebase';
-import NotFoundPage from './components/NotFound';
-
-
+import { useEffect, useContext, useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./landingpage/HomePage";
+import Login from "./pages/Login";
+import Hospitals from "./hospital/Hospitals";
+import HospitalDetails from "./hospital/HospitalDetails";
+import Register from "./pages/Register";
+import { ErrorFallback } from "./components/Errorboundary/ErrorFallBack";
+import { ErrorBoundary } from "react-error-boundary";
+import { AuthContext } from "./context/AuthContext";
+import NavigationBar from "./navigation/NavigationBar";
+import { auth, signOut, signInWithGoogle } from "./components/Firebase";
+import NotFoundPage from "./components/NotFound";
+import AddHospital from "./pages/AddHospital";
+import AddDoctor from "./pages/AddDoctor";
 
 function App() {
   const { currentUser, setCurrentUser } = useContext(AuthContext);
@@ -58,30 +58,45 @@ function App() {
       }
     });
   }, [setCurrentUser]);
- 
+
+  interface HospitalEntry {
+    title: string;
+    content: string;
+  }
 
   return (
     <div className="App">
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <NavigationBar signOut={signOutUser} user={currentUser} />
 
-        
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/hospitals" element={<Hospitals handleDetails={handleDetails} />} />
-        <Route path='/hospitaldetails' element={<HospitalDetails name={''} business_status={''} rating={''} details={details} vicinity={''} opening_hours={false}/>} /> 
-        <Route path="/signin" element={<Login  signIn={signIn} />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="*" element={<NotFoundPage />} />
-
-        
-  
-      </Routes>
-
-        </ErrorBoundary>
-
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/hospitals"
+            element={<Hospitals handleDetails={handleDetails} />}
+          />
+          <Route
+            path="/hospitaldetails"
+            element={
+              <HospitalDetails
+                name={""}
+                business_status={""}
+                rating={""}
+                details={details}
+                vicinity={""}
+                opening_hours={false}
+              />
+            }
+          />
+          <Route path="/signin" element={<Login signIn={signIn} />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/addhospital" element={<AddHospital />} />
+          <Route path="/doctors" element={<AddDoctor />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </ErrorBoundary>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

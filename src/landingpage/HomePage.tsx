@@ -1,8 +1,7 @@
 import React from "react";
 import "./homepage.css";
 import { AiOutlineSearch } from "react-icons/ai";
-import { GiDoctorFace } from "react-icons/gi";
-import { MdOutlineTipsAndUpdates } from "react-icons/md";
+import { GiDoctorFace, GiHospital } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
 
 
@@ -35,20 +34,20 @@ const HomePage: React.FC = () => {
         <div className="careheader_select">
          
           <div className="careheader_item">
-            <MdOutlineTipsAndUpdates className="careheader_select_icon" />
+            <GiHospital className="careheader_select_icon" />
             <p onClick={
               () => {
-                navigate ("/HealthTips")
+                navigate ("/addhospital")
               }
-            } >Health Tips</p>
+            } >Add Hospital</p>
           </div>
           <div className="careheader_item">
             <GiDoctorFace className="careheader_select_icon" />
             <p onClick={
               () => { 
-                navigate ("/Doctors")
+                navigate ("/doctors")
               }
-            }>Doctor</p>
+            }>Add Doctor</p>
           </div>
         </div>
       </div>

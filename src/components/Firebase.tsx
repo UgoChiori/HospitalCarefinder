@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth, signInWithPopup, createUserWithEmailAndPassword, GoogleAuthProvider } from "firebase/auth";
 import { getAnalytics, logEvent } from "firebase/analytics";
-// import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { getStorage} from "firebase/storage";
 
 
 
@@ -43,8 +43,8 @@ export const signUp = (email: string, password: string) => createUserWithEmailAn
 // Sign out
 export const signOut = () => getAuth().signOut();
 
-// // Storage 
-// export const storage = getStorage();
+// Storage
+export const storage = getStorage(app);
 
 // // Upload image to storage
 // export const uploadImage = (file: any, name: string) => {
