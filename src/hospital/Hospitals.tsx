@@ -13,7 +13,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 interface HospitalProps {
   handleDetails: any;
 }
-const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
+const Hospitals: React.FC<HospitalProps> = () => {
   const [testHospitals, setTestHospitals] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [nextTokens, setNextTokens] = useState<any[]>([]);
