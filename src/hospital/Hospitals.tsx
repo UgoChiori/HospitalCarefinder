@@ -13,7 +13,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 interface HospitalProps {
   handleDetails: any;
 }
-const Hospitals: React.FC<HospitalProps> = ({handleDetails}) => {
+const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
   const [testHospitals, setTestHospitals] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [nextTokens, setNextTokens] = useState<any[]>([]);
@@ -24,7 +24,6 @@ const Hospitals: React.FC<HospitalProps> = ({handleDetails}) => {
   ]);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true); // Added loading state
-  
 
   // SHARE VIA WHATSAPP
   const handleShare = () => {
@@ -62,7 +61,6 @@ const Hospitals: React.FC<HospitalProps> = ({handleDetails}) => {
     )}&body=${encodeURIComponent(shareBody)}`;
     window.open(linkUrl, "_blank");
   };
-
 
   // SEARCH HOSPITALS
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -201,26 +199,25 @@ const Hospitals: React.FC<HospitalProps> = ({handleDetails}) => {
       </div>
 
       <div className="hospital-cover">
-      
         {loading ? (
           <div className="loader">Loading...</div> // Show loading state
         ) : (
           <div className="hospitals-grid">
-{testHospitals.length > 0 ? (
-    testHospitals.map((_hospital: any, index: number) => (
-      <HospitalCard
-        key={index}
-        name={_hospital.name}
-        status={_hospital.business_status}
-        rating={_hospital.rating}
-        handleDetails={handleDetails}
-        details={_hospital}
-        formatted_address={_hospital.formatted_address}
-      />
-    ))
-  ) : (
-    <p>No hospitals found.</p>
-  )}
+            {testHospitals.length > 0 ? (
+              testHospitals?.map((_hospital: any, index: number) => (
+                <HospitalCard
+                  key={index}
+                  name={_hospital.name}
+                  status={_hospital.business_status}
+                  rating={_hospital.rating}
+                  handleDetails={handleDetails}
+                  details={_hospital}
+                  formatted_address={_hospital.formatted_address}
+                />
+              ))
+            ) : (
+              <p>No hospitals found.</p>
+            )}
             {/* <textarea
               className="share-textarea"
               placeholder="Share this link"
