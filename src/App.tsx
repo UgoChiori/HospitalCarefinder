@@ -59,11 +59,7 @@ function App() {
     });
   }, [setCurrentUser]);
 
-  interface HospitalEntry {
-    title: string;
-    content: string;
-  }
-
+  
   return (
     <div className="App">
       <ErrorBoundary FallbackComponent={ErrorFallback}>
