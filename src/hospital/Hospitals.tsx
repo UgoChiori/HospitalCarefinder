@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import HospitalCard from "../hospital/HospitalCard";
+// import HospitalCard from "../hospital/HospitalCard";
 import "./hospitals.css";
 import { AiOutlineSearch } from "react-icons/ai";
 import "firebase/app";
@@ -19,12 +19,12 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
   const [nextTokens, setNextTokens] = useState<any[]>([]);
   const [nextState, setNextState] = useState<boolean>(false);
   const [pageUrl] = useState<string[]>([
-    "https://hospital-carefinder-slui.vercel.app/api/maps/place?latitude=6.468137&longitude=3.638487&radius=30000",
-    "https://hospital-carefinder-slui.vercel.app/api/maps/place/next?nextpage=",
+    "http://localhost:9090/api/maps/place?latitude=6.468137&longitude=3.638487&radius=30000",
+    "http://localhost:9090/api/maps/place/next?nextpage=",
   ]);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true); // Added loading state
-  const [showLocationPopup, setShowLocationPopup] = useState<boolean>(false);
+  
 
   // SHARE VIA WHATSAPP
   const handleShare = () => {
@@ -63,60 +63,6 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
     window.open(linkUrl, "_blank");
   };
 
-  const handleLocationPermissionResponse = (allowPermission: any) => {
-    if (allowPermission) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const latitude = position.coords.latitude;
-          const longitude = position.coords.longitude;
-          console.log(latitude, longitude);
-          const url = `http://localhost:9090/api/maps/place?latitude=${latitude}&longitude=${longitude}&radius=30000`;
-          axios.get(url).then((response) => {
-            console.log(response);
-            setTestHospitals(response.data.results);
-          });
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-    } else {
-      setShowLocationPopup(false);
-    }
-  };
-
-  useEffect(() => {
-    if (!navigator.geolocation) {
-      setShowLocationPopup(false);
-    } else {
-      navigator.permissions
-        .query({ name: "geolocation" })
-        .then((permissionStatus) => {
-          if (permissionStatus.state === "granted") {
-            navigator.geolocation.getCurrentPosition(
-              (position) => {
-                const latitude = position.coords.latitude;
-                const longitude = position.coords.longitude;
-                console.log(latitude, longitude);
-                const url = `http://localhost:9090/api/maps/place?latitude=${latitude}&longitude=${longitude}&radius=30000`;
-                axios.get(url).then((response) => {
-                  console.log(response);
-                  setTestHospitals(response.data.results);
-                });
-              },
-              (error) => {
-                console.log(error);
-              }
-            );
-          } else if (permissionStatus.state === "prompt") {
-            setShowLocationPopup(true);
-          } else {
-            setShowLocationPopup(false);
-            console.log("Permission denied");
-          }
-        });
-    }
-  }, []);
 
   // SEARCH HOSPITALS
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -255,21 +201,19 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
       </div>
 
       <div className="hospital-cover">
-        {showLocationPopup && (
-          <div className="location-popup">
-            <div className="location-popup-content">
-              <p>
-                Please enable location permissions to view hospitals near you
-              </p>
-              <button onClick={handleLocationPermissionResponse}>Enable</button>
-            </div>
-          </div>
-        )}
+      
         {loading ? (
           <div className="loader">Loading...</div> // Show loading state
         ) : (
           <div className="hospitals-grid">
-            {testHospitals?.map((_hospital: any, index: number) => {
+
+            <textarea
+              className="share-textarea"
+              placeholder="Share this link"
+            
+              readOnly
+            ></textarea>
+            {/* {testHospitals?.map((_hospital: any, index: number) => {
               return (
                 <HospitalCard
                   key={index}
@@ -281,7 +225,7 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
                   formatted_address={_hospital.formatted_address}
                 />
               );
-            })}
+            })} */}
           </div>
         )}
       </div>
