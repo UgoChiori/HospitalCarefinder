@@ -19,8 +19,8 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
   const [nextTokens, setNextTokens] = useState<any[]>([]);
   const [nextState, setNextState] = useState<boolean>(false);
   const [pageUrl] = useState<string[]>([
-    "https://hospital-carefinder-slui-i6gozcd8z-ugochiori.vercel.app/api/maps/place?latitude=6.468137&longitude=3.638487&radius=30000",
-    "https://hospital-carefinder-slui-i6gozcd8z-ugochiori.vercel.app/api/maps/place/next?nextpage=",
+    "https://hospital-carefinder-slui.vercel.app/api/maps/place?latitude=6.468137&longitude=3.638487&radius=30000",
+    "https://hospital-carefinder-slui.vercel.app/api/maps/place/next?nextpage=",
   ]);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true); // Added loading state
