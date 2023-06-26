@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import HospitalCard from "../hospital/HospitalCard";
+import HospitalCard from "../hospital/HospitalCard";
 import "./hospitals.css";
 import { AiOutlineSearch } from "react-icons/ai";
 import "firebase/app";
@@ -13,7 +13,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 interface HospitalProps {
   handleDetails: any;
 }
-const Hospitals: React.FC<HospitalProps> = () => {
+const Hospitals: React.FC<HospitalProps> = ({handleDetails}) => {
   const [testHospitals, setTestHospitals] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [nextTokens, setNextTokens] = useState<any[]>([]);
@@ -206,13 +206,27 @@ const Hospitals: React.FC<HospitalProps> = () => {
           <div className="loader">Loading...</div> // Show loading state
         ) : (
           <div className="hospitals-grid">
-
-            <textarea
+{testHospitals.length > 0 ? (
+    testHospitals.map((_hospital: any, index: number) => (
+      <HospitalCard
+        key={index}
+        name={_hospital.name}
+        status={_hospital.business_status}
+        rating={_hospital.rating}
+        handleDetails={handleDetails}
+        details={_hospital}
+        formatted_address={_hospital.formatted_address}
+      />
+    ))
+  ) : (
+    <p>No hospitals found.</p>
+  )}
+            {/* <textarea
               className="share-textarea"
               placeholder="Share this link"
             
               readOnly
-            ></textarea>
+            ></textarea> */}
             {/* {testHospitals?.map((_hospital: any, index: number) => {
               return (
                 <HospitalCard
