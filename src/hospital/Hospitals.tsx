@@ -166,7 +166,7 @@ const Hospitals: React.FC<HospitalProps> = () => {
           <div className="loader">Loading...</div>
         ) : (
           <div className="hospitals-grid">
-            <textarea readOnly />
+           <h1>ALTSCHOOL PLEASE</h1>
             {/* {testHospitals.length > 0 ? (
               testHospitals?.map((_hospital: any, index: number) => (
                 <HospitalCard
