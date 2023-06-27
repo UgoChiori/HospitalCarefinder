@@ -1,5 +1,5 @@
 import { useEffect, useContext, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as  Routes, Route } from "react-router-dom";
 import HomePage from "./landingpage/HomePage";
 import Login from "./pages/Login";
 import Hospitals from "./hospital/Hospitals";
@@ -13,6 +13,7 @@ import { auth, signOut, signInWithGoogle } from "./components/Firebase";
 import NotFoundPage from "./components/NotFound";
 import AddHospital from "./pages/AddHospital";
 import AddDoctor from "./pages/AddDoctor";
+// import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   const { currentUser, setCurrentUser } = useContext(AuthContext);
@@ -59,7 +60,6 @@ function App() {
     });
   }, [setCurrentUser]);
 
-  
   return (
     <div className="App">
       <ErrorBoundary FallbackComponent={ErrorFallback}>
@@ -67,10 +67,8 @@ function App() {
 
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route
-            path="/hospitals"
-            element={<Hospitals handleDetails={handleDetails} />}
-          />
+          <Route path="/hospitals" element={<Hospitals handleDetails={handleDetails} />} />
+
           <Route
             path="/hospitaldetails"
             element={

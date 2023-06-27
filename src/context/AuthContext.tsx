@@ -9,9 +9,13 @@ interface AuthContextProps {
 
 export const AuthContext = createContext<AuthContextProps>({
   currentUser: null,
-  setCurrentUser: () => {},
+  setCurrentUser: () => {
+    return;
+  },
   isOpen: false,
-  setIsOpen: () => {},
+  setIsOpen: () => {
+    return;
+  },
 });
 
 const AuthContextProvider: React.FC<{ children: React.ReactNode }> = ({
