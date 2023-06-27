@@ -1,5 +1,5 @@
 import { useEffect, useContext, useState } from "react";
-import { BrowserRouter as  Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import HomePage from "./landingpage/HomePage";
 import Login from "./pages/Login";
 import Hospitals from "./hospital/Hospitals";
