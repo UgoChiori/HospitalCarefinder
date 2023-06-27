@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import HospitalCard from "../hospital/HospitalCard";
+// import HospitalCard from "../hospital/HospitalCard";
 import "./hospitals.css";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaWhatsapp, FaEnvelope, FaLink } from "react-icons/fa";
@@ -10,7 +10,7 @@ interface HospitalProps {
   handleDetails: any;
 }
 
-const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
+const Hospitals: React.FC<HospitalProps> = () => {
   const [testHospitals, setTestHospitals] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [nextTokens, setNextTokens] = useState<any[]>([]);
