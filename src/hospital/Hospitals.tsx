@@ -437,8 +437,6 @@
 
 // export default Hospitals;
 
-
-
 // import React, { useState, useEffect } from "react";
 // import axios from "axios";
 // import HospitalCard from "../hospital/HospitalCard";
@@ -552,8 +550,6 @@
 
 // export default Hospitals
 
-
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import HospitalCard from "../hospital/HospitalCard";
@@ -650,7 +646,7 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
             const nextPage = {
               page: currentPage + 1,
               token: res.data.next_page_token,
-            }; 
+            };
             setNextTokens([...nextTokens, nextPage as any]);
             setNextState(true);
             if (res.data.next_page_token) {
@@ -671,7 +667,9 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
   }, [currentPage]);
 
   const handleShare = () => {
-    const hospitalData = testHospitals.map((hospital) => hospital.name).join("\n");
+    const hospitalData = testHospitals
+      .map((hospital) => hospital.name)
+      .join("\n");
     const message = `Check out these hospitals: \n${hospitalData}`;
 
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
@@ -679,7 +677,9 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
   };
 
   const handleShareEmail = () => {
-    const hospitalData = testHospitals.map((hospital) => hospital.name).join("\n");
+    const hospitalData = testHospitals
+      .map((hospital) => hospital.name)
+      .join("\n");
     const shareBody = `Check out these hospitals: \n${hospitalData}`;
 
     const emailUrl = `mailto:?subject=${encodeURIComponent(
@@ -689,7 +689,9 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
   };
 
   const handleGenerateLink = () => {
-    const hospitalData = testHospitals.map((hospital) => hospital.name).join("\n");
+    const hospitalData = testHospitals
+      .map((hospital) => hospital.name)
+      .join("\n");
     const shareBody = `Check out these hospitals: \n${hospitalData}`;
 
     const linkUrl = `https://hospital-carefinder.vercel.app/hospitals?subject=${encodeURIComponent(
