@@ -36,7 +36,7 @@ const Hospitals: React.FC<HospitalProps> = () => {
 
   useEffect(() => {
     axios.get(
-      `https://maps.googleapis.com/maps/api/place/textsearch/json?query=hospitals&key=${PROCESS.ENV.API_KEY}`
+      `https://maps.googleapis.com/maps/api/place/textsearch/json?query=hospitals&key=${process.env.API_KEY}`
       // "https://hospital-carefinder-477hu547y-ugochiori.vercel.app/api/maps/place?latitude=6.468137&longitude=3.638487&radius=30000"
     )
     .then (res => {
