@@ -95,14 +95,6 @@ const RegistrationForm = () => {
     }
   };
 
-  const togglePasswordVisibility = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const passwordInput = e.currentTarget.previousSibling as HTMLInputElement;
-    if (passwordInput.type === "password") {
-      passwordInput.type = "text";
-    } else {
-      passwordInput.type = "password";
-    }
-  };
 
   return (
     <div className="registration-form-wrapper">
@@ -169,11 +161,7 @@ const RegistrationForm = () => {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
-                {showPassword ? (
-                  <FaEyeSlash className="eye-icon" onClick={() => setShowPassword(!showPassword)} />
-                ) : (
-                  <FaEye className="eye-icon" onClick={() => setShowPassword(!showPassword) } />
-                )}
+              
                
               </div>
               {confirmPasswordError && <p>{confirmPasswordError}</p>}
