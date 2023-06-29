@@ -7,6 +7,7 @@ import AuthContextProvider from './context/AuthContext.tsx';
 
 
 
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <BrowserRouter>
   <AuthContextProvider>

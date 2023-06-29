@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import { storage } from "../Firebase";
 import { getDownloadURL, listAll, ref, uploadBytes } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
 
 interface HospitalEntry {
   name: string;
@@ -14,7 +15,7 @@ interface MarkdownEditorProps {
   onSave: (entry: HospitalEntry) => void;
 }
 
-const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ content, onSave }) => {
+const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ content}) => {
   const [name, setName] = useState("");
   const [editorContent, setEditorContent] = useState("");
   const [imageUpload, setImageUpload] = useState<File | null>(null);
@@ -34,17 +35,27 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ content, onSave }) => {
     setEditorContent(event.target.value);
   };
 
-  const handleSave = () => {
+
+  const handleSave = async () => {
     const entry: HospitalEntry = {
       name,
       content: editorContent,
     };
-    onSave(entry);
-    setName("");
-    setEditorContent("");
+
+    const firestore = getFirestore();
+  
+    try {
+      const docRef = await addDoc(collection(firestore, "entries"), entry);
+      console.log("Entry saved with ID: ", docRef.id);
+      setName("");
+      setEditorContent("");
+    } catch (error) {
+      console.error("Error adding entry: ", error);
+    }
   };
 
-  const imagesListRef = ref(storage, "images/*");
+
+  const imagesListRef = ref(storage, "images/");
   const uploadImage = () => {
     if (imageUpload == null) {
       return;
@@ -58,7 +69,8 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ content, onSave }) => {
       })
       .then((downloadURL) => {
         setImageURL((prevURLs) => [...prevURLs, downloadURL]);
-        alert("Image Uploaded");
+        // alert("Image Uploaded. Thank you!");
+        setImageURL((prevURL) => [...prevURL],)
       })
       .catch((error) => {
         console.log(error);

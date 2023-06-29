@@ -76,16 +76,16 @@ const NavigationBar: React.FC<NavbarProps> = ({ signOut, user }) => {
                         </div>
                       )}
                       {toggle && (
-                        <ul className="dropdown_menu">
-                          <li>
+                        <ul id="dropdown_menu" >
+                          <li className="list-drop">
                             <Link to="/profile" onClick={handleLinkClick}>
-                              <RxAvatar className="nav_icon" />
+                              <RxAvatar className="user_icon" />
                               Profile
                             </Link>
                           </li>
                           <li>
                             <Link to="/" onClick={signOut}>
-                              <MdLogout className="nav_icon" />
+                              <MdLogout className="user_icon" />
                               Logout
                             </Link>
                           </li>

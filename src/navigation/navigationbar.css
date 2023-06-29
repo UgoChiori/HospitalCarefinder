@@ -79,22 +79,24 @@ a:hover {
 .nav_icon {
     font-size: 1.5rem;
     cursor: pointer;
+
 }
 
 .app_navbar_profile_flex {
-    display: flex;
-
+    /* display: flex; */
     align-items: center;
+    font-size: 12px;
     width: 50%;
+    border: 1px solid green;
 }
 
-.carefinderlogo{
+.carefinderlogo {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     margin-right: 1rem;
     background-color: #441673;
-    
+
 }
 
 .avatar {
@@ -102,6 +104,12 @@ a:hover {
     height: 50px;
     border-radius: 50%;
     margin-right: 1rem;
+}
+
+#dropdown_menu {
+    border: 1px solid red;
+    font-family: cursive;
+    
 }
 
 @media screen and (max-width:991px) {

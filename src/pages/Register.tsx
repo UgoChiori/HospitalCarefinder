@@ -8,7 +8,7 @@ import {
 import { auth } from "../components/Firebase";
 import "./register.css";
 import { useNavigate } from "react-router-dom";
-
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const RegistrationForm = () => {
   const [name, setName] = useState("");
@@ -16,11 +16,50 @@ const RegistrationForm = () => {
   const [password, setPassword] = useState("");
   const [registered, setRegistered] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [error] = useState(null);
+  const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [confirmPasswordError, setConfirmPasswordError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // Validate form inputs
+    let isValid = true;
+
+    if (name.length < 3) {
+      setNameError("Name must be at least 3 characters");
+      isValid = false;
+    } else {
+      setNameError("");
+    }
+
+    if (email.length < 3) {
+      setEmailError("Email must be at least 3 characters");
+      isValid = false;
+    } else {
+      setEmailError("");
+    }
+
+    if (password.length < 6) {
+      setPasswordError("Password must be at least 6 characters");
+      isValid = false;
+    } else {
+      setPasswordError("");
+    }
+
+    if (confirmPassword !== password) {
+      setConfirmPasswordError("Passwords must match");
+      isValid = false;
+    } else {
+      setConfirmPasswordError("");
+    }
+
+    if (!isValid) {
+      return;
+    }
 
     try {
       await createUserWithEmailAndPassword(auth, email, password);
@@ -56,11 +95,19 @@ const RegistrationForm = () => {
     }
   };
 
+  const togglePasswordVisibility = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const passwordInput = e.currentTarget.previousSibling as HTMLInputElement;
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+    } else {
+      passwordInput.type = "password";
+    }
+  };
+
   return (
     <div className="registration-form-wrapper">
       <div className="registration-form">
         <h1>Registration</h1>
-       {error && {error} }
         {registered ? (
           <div>
             <h1>Welcome, {name || ""}!</h1>
@@ -77,7 +124,7 @@ const RegistrationForm = () => {
                 onChange={(e) => setName(e.target.value)}
                 required
               />
-              {name.length < 3 && <p>Name must be at least 3 characters</p>}
+              {nameError && <p>{nameError}</p>}
             </div>
             <div className="form-group">
               <label htmlFor="email">Email:</label>
@@ -88,37 +135,50 @@ const RegistrationForm = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              {email.length < 3 && <p>Email must be at least 3 characters</p>}
+              {emailError && <p>{emailError}</p>}
             </div>
             <div className="form-group">
               <label htmlFor="password">Password:</label>
-              <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-              {password.length < 6 && (
-                <p>Password must be at least 6 characters</p>
+              <div className="password-input-wrapper">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                 {showPassword ? (
+                  <FaEyeSlash className="eye-icon" onClick={() => setShowPassword(!showPassword)} />
+                ) : (
+                  <FaEye className="eye-icon" onClick={() => setShowPassword(!showPassword) } />
+                )}
+              </div>
+              {passwordError && (
+                <span className="error" style={{ color: "red" }}>
+                  {passwordError}{" "}
+                </span>
               )}
             </div>
             <div className="form-group">
               <label htmlFor="confirmPassword">Confirm Password:</label>
-              <input
-                type="password"
-                id="confirmPassword"
-                required
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-              {confirmPassword !== password && <p>Passwords must match</p>}
+              <div className="password-input-wrapper">
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  required
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+                {showPassword ? (
+                  <FaEyeSlash className="eye-icon" onClick={() => setShowPassword(!showPassword)} />
+                ) : (
+                  <FaEye className="eye-icon" onClick={() => setShowPassword(!showPassword) } />
+                )}
+               
+              </div>
+              {confirmPasswordError && <p>{confirmPasswordError}</p>}
             </div>
-            <button
-              onClick={handleSubmit}
-              className="signup-methods"
-              type="submit"
-            >
+            <button className="signup-methods" type="submit">
               Register
             </button>
           </form>

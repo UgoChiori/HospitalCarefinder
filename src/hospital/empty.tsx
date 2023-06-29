@@ -24,9 +24,7 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
   const [filteredHospitals, setFilteredHospitals] = useState<any[]>([]);
-  // const [userLocation, setUserLocation] = useState<GeolocationCoordinates | null>(null);
-  const [latitude, setLatitude] = useState(6.5095);
-  const [longitude, setLongitude] = useState(3.3711);
+  const [userLocation, setUserLocation] = useState<GeolocationCoordinates | null>(null);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
@@ -40,6 +38,25 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
     setCurrentPage((prevPage) => prevPage - 1);
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(pageUrl[0]);
+        setTestHospitals(res.data.results);
+        if (res.data.next_page_token) {
+          setNextState(true);
+        }
+        const nextPage = { page: 2, token: res.data.next_page_token };
+        setNextTokens([...nextTokens, nextPage]);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   useEffect(() => {
     const filteredHospitals = testHospitals.filter((hospital) =>
@@ -96,53 +113,32 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
     fetchData();
   }, [currentPage]);
 
-
-      
   useEffect(() => {
-    const fetchData = async () => {
-      const nearbyHospitalsUrl = `https://ugomedicareserver-gmkphvvg6-ugochiori.vercel.app/api/maps/place?latitude=${latitude}&longitude=${longitude}&radius=50000&type=hospitals`;
-      
-      try {
-        const res = await axios.get(nearbyHospitalsUrl);
-        setTestHospitals(res.data.results);
-        if (res.data.next_page_token) {
-          setNextState(true);
+    const fetchNearbyHospitals = async () => {
+      if (userLocation) {
+        const { latitude, longitude } = userLocation;
+        const nearbyHospitalsUrl = `https://ugomedicareserver-gmkphvvg6-ugochiori.vercel.app/api/maps/place?latitude=${latitude}&longitude=${longitude}&radius=30000`;
+        setPageUrl([nearbyHospitalsUrl, pageUrl[1]]);
+      }
+    };
+
+    fetchNearbyHospitals();
+  }, [userLocation]);
+
+  useEffect(() => {
+    const getUserLocation = () => {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setUserLocation(position.coords);
+        },
+        (error) => {
+          console.log(error);
         }
-        const nextPage = { page: 2, token: res.data.next_page_token };
-        setNextTokens([...nextTokens, nextPage]);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
+      );
     };
 
-    fetchData();
-  }, [latitude, longitude]);
-
-
-  useEffect(() => {
-    const getLocation = () => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            setLatitude(position.coords.latitude);
-            setLongitude(position.coords.longitude);
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
-      } else {
-        alert("Geolocation is not available");
-      }
-    };
-
-    getLocation();
+    getUserLocation();
   }, []);
-
-
-    
 
   const handleShare = () => {
     const hospitalData = testHospitals
@@ -227,11 +223,7 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
         <FaEnvelope className="share-button" onClick={handleShareEmail} />
         <FaLink className="share-button" onClick={handleGenerateLink} />
       </div>
-      <div>
-        <MapContainer
-        
-         hospitals={testHospitals} />
-      </div>
+      <MapContainer hospitals={testHospitals} />
     </div>
   );
 };

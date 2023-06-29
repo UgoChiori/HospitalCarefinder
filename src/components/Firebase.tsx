@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { getAuth, signInWithPopup, createUserWithEmailAndPassword, GoogleAuthProvider } from "firebase/auth";
 import { getAnalytics, logEvent } from "firebase/analytics";
 import { getStorage} from "firebase/storage";
@@ -28,6 +28,8 @@ export const auth = getAuth();
 // Firestore
 export const db = getFirestore();
 
+
+
 // Google Auth Provider
 const provider = new GoogleAuthProvider();
 provider.setCustomParameters({ prompt: "select_account" });
@@ -46,19 +48,6 @@ export const signOut = () => getAuth().signOut();
 // Storage
 export const storage = getStorage(app);
 
-// // Upload image to storage
-// export const uploadImage = (file: any, name: string) => {
-//   const storageRef = ref(storage, name);
-//   uploadBytes(storageRef, file).then((snapshot) => {
-//     console.log("Uploaded a blob or file!");
-//   });
-// }
-
-// // Get image url from storage
-// export const getImageUrl = (name: string) => {
-//   const storageRef = ref(storage, name);
-//   return getDownloadURL(storageRef);
-// }
 
 
 
