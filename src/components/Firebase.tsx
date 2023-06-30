@@ -26,7 +26,8 @@ logEvent(analytics, "notification_received");
 export const auth = getAuth();
 
 // Firestore
-export const db = getFirestore();
+const db = getFirestore(app);
+export { db, firebaseConfig };
 
 
 

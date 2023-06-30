@@ -11,8 +11,8 @@ import { AuthContext } from "./context/AuthContext";
 import NavigationBar from "./navigation/NavigationBar";
 import { auth, signOut, signInWithGoogle } from "./components/Firebase";
 import NotFoundPage from "./components/NotFound";
-import AddHospital from "./pages/AddHospital";
-import AddDoctor from "./pages/AddDoctor";
+import Reviews from "./pages/Reviews";
+import AddReview from "./pages/AddReview";
 // import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
@@ -96,8 +96,8 @@ function App() {
           />
           <Route path="/signin" element={<Login signIn={signIn} />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/addhospital" element={<AddHospital />} />
-          <Route path="/doctors" element={<AddDoctor />} />
+          <Route path="/reviews" element={<Reviews />} />
+          <Route path="/addreview" element={<AddReview />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </ErrorBoundary>

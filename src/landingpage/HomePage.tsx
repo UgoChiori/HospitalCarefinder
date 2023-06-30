@@ -4,8 +4,6 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { GiDoctorFace, GiHospital } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
 
-
-
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
   return (
@@ -16,42 +14,42 @@ const HomePage: React.FC = () => {
             Search Your <span className="careheader_heading_span">Care</span>{" "}
             Provider
           </h1>
-          
+
           <div className="careheader_input">
             <AiOutlineSearch className="careheader_input_icon" />
             <input
               type="text"
               placeholder="Search"
               className="careheader_input_element"
-              onClick={
-                () => {
-                  navigate ("/register")
-                }
-              }
+              onClick={() => {
+                navigate("/register");
+              }}
             />
           </div>
         </div>
         <div className="careheader_select">
-         
           <div className="careheader_item">
             <GiHospital className="careheader_select_icon" />
-            <p onClick={
-              () => {
-                navigate ("/addhospital")
-              }
-            } >Add Hospital</p>
+            <p
+              onClick={() => {
+                navigate("/reviews");
+              }}
+            >
+              Read Review
+            </p>
           </div>
           <div className="careheader_item">
             <GiDoctorFace className="careheader_select_icon" />
-            <p onClick={
-              () => { 
-                navigate ("/doctors")
-              }
-            }>Add Doctor</p>
+            <p
+              onClick={() => {
+                navigate("/addreview");
+              }}
+            >
+              Add Review
+            </p>
           </div>
         </div>
       </div>
-     
     </div>
   );
 };

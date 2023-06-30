@@ -87,7 +87,7 @@ a:hover {
     align-items: center;
     font-size: 12px;
     width: 50%;
-    border: 1px solid green;
+   
 }
 
 .carefinderlogo {
@@ -107,7 +107,7 @@ a:hover {
 }
 
 #dropdown_menu {
-    border: 1px solid red;
+  
     font-family: cursive;
     
 }
