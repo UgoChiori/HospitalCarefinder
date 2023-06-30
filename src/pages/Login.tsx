@@ -331,7 +331,7 @@ const Login: React.FC<SigninFormProps> = () => {
         )}
         <p
           className="reset-password"
-          style={{ background: "green" }}
+         
           onClick={handleResetPasssword}
         >
           Reset Password

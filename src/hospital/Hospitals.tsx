@@ -15,12 +15,10 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [nextTokens, setNextTokens] = useState<any[]>([]);
   const [nextState, setNextState] = useState<boolean>(false);
-  const [pageUrl] = useState<string[]>(
-    [
-      `https://ugomedicareserver-gmkphvvg6-ugochiori.vercel.app/api/maps/place?latitude=6.468137&longitude=3.638487&radius=30000`,
-      `https://ugomedicareserver-gmkphvvg6-ugochiori.vercel.app/api/maps/place/next?nextpage=`,
-    ]
-  );
+  const [pageUrl] = useState<string[]>([
+    `https://ugomedicareserver-gmkphvvg6-ugochiori.vercel.app/api/maps/place?latitude=6.468137&longitude=3.638487&radius=100000`,
+    `https://ugomedicareserver-gmkphvvg6-ugochiori.vercel.app/api/maps/place/next?nextpage=`,
+  ]);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
   const [filteredHospitals, setFilteredHospitals] = useState<any[]>([]);
@@ -39,7 +37,6 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
   const previousPage = () => {
     setCurrentPage((prevPage) => prevPage - 1);
   };
-
 
   useEffect(() => {
     const filteredHospitals = testHospitals.filter((hospital) =>
@@ -96,12 +93,10 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
     fetchData();
   }, [currentPage]);
 
-
-      
   useEffect(() => {
     const fetchData = async () => {
       const nearbyHospitalsUrl = `https://ugomedicareserver-gmkphvvg6-ugochiori.vercel.app/api/maps/place?latitude=${latitude}&longitude=${longitude}&radius=50000&type=hospitals`;
-      
+
       try {
         const res = await axios.get(nearbyHospitalsUrl);
         setTestHospitals(res.data.results);
@@ -119,7 +114,6 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
 
     fetchData();
   }, [latitude, longitude]);
-
 
   useEffect(() => {
     const getLocation = () => {
@@ -140,9 +134,6 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
 
     getLocation();
   }, []);
-
-
-    
 
   const handleShare = () => {
     const hospitalData = testHospitals
@@ -223,14 +214,15 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
         <button disabled={!nextState} onClick={nextPage}>
           Next
         </button>
-        <FaWhatsapp className="share-button" onClick={handleShare} />
-        <FaEnvelope className="share-button" onClick={handleShareEmail} />
-        <FaLink className="share-button" onClick={handleGenerateLink} />
+        <div className="share-button-container">
+          <FaWhatsapp className="share-button" onClick={handleShare} />
+          <FaEnvelope className="share-button" onClick={handleShareEmail} />
+          <FaLink className="share-button" onClick={handleGenerateLink} />
+        </div>
       </div>
       <div>
-        <MapContainer
-
-         hospitals={testHospitals} />
+        {/* <MapContainer hospitals={testHospitals} /> */}
+        <MapContainer hospitals={testHospitals} />
       </div>
     </div>
   );

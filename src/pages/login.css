@@ -51,7 +51,7 @@ input {
     font-size: 16px;
     border-radius: 4px;
     background: white;
-    color: #441673;
+    color: darkturquoise;
     cursor: pointer;
     transition: all 0.3s ease 0s;
 
@@ -63,7 +63,7 @@ input {
     padding: 8px;
     font-size: 16px;
     border-radius: 4px;
-    background: #441673;
+    background: darkturquoise;
     color: white;
     cursor: pointer;
     transition: all 0.3s ease 0s;
@@ -71,7 +71,7 @@ input {
 
 .login-methods:hover {
     background:white;
-    color: #441673;
+    color: darkturquoise;
     border: none;
     box-shadow: 0px 15px 20px rgba(68, 22, 115, 0.4);
     transform: translateY(-7px);
@@ -81,7 +81,7 @@ input {
 }
 
 .welcome-container {
-    background: #441673;
+    background: darkturquoise;
     color: white;
     font-family: cursive;
 }

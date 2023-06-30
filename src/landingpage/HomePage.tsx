@@ -6,6 +6,9 @@ import { useNavigate } from "react-router-dom";
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
+
+
+
   return (
     <div className="careheader_container">
       <div className="careheader_wrapper">
@@ -32,6 +35,7 @@ const HomePage: React.FC = () => {
             <GiHospital className="careheader_select_icon" />
             <p
               onClick={() => {
+                console.log("clicked view reviews")
                 navigate("/reviews");
               }}
             >
@@ -42,6 +46,7 @@ const HomePage: React.FC = () => {
             <GiDoctorFace className="careheader_select_icon" />
             <p
               onClick={() => {
+                console.log("clicked add review")
                 navigate("/addreview");
               }}
             >

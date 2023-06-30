@@ -27,7 +27,7 @@ a:hover {
     position: fixed;
     width: 100%;
     color: #fff;
-    background: #441673;
+    background: darkturquoise;
     z-index: 100;
 
 
@@ -43,13 +43,13 @@ a:hover {
 
 .nav_container1 {
     min-height: 11vh;
-    box-shadow: 0 1px 1px -1px rgb(165, 165, 165);
+    box-shadow: 0 1px 1px -1px rgb(4, 2, 2);
     display: flex;
     position: fixed;
     width: 100%;
     color: #fff;
     z-index: 100;
-    background-color: #916bb6;
+    background-color: rgb(125, 237, 239);
     opacity: 0.6;
 }
 
@@ -90,12 +90,12 @@ a:hover {
    
 }
 
-.carefinderlogo {
+.carefinderlogoo {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     margin-right: 1rem;
-    background-color: #441673;
+    background-color: darkturquoise;
 
 }
 
@@ -124,7 +124,7 @@ a:hover {
     .nav_ul {
         position: absolute;
         top: calc(100%);
-        background-color: #441673;
+        background-color: darkturquoise;
         width: 100%;
         text-align: center;
         height: 100vh;

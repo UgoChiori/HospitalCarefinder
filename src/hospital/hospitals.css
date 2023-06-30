@@ -67,7 +67,7 @@
   
   .pagination-buttons button {
     padding: 10px 20px;
-    background-color: #441673;
+    background-color: darkturquoise;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -78,9 +78,6 @@
     transition: all 0.3s ease-in-out;
   }
   
-  .pagination-buttons button:hover {
-    background-color: #9f9ebb;
-  }
   
   .pagination-buttons button:disabled {
     opacity: 0.5;
@@ -88,7 +85,7 @@
   }
   
   .hospital_card {
-    background-color: #441673;
+    background-color: darkturquoise;
     border-radius: 5px;
     padding: 1rem;
     transition: all 0.3s ease-in-out;
@@ -102,10 +99,7 @@
     color: #fff;
   }
   
-  .hospital_card:hover {
-    transform: scale(1.02);
-    background-color: #916bb6;
-  }
+ 
   
   .hospital-card-buttons {
     width: 60px;
@@ -116,7 +110,7 @@
   }
   
   .loader {
-    color: #441673;
+    color: darkturquoise;
     font-size: 30px;
     font-family: cursive;
   }
@@ -131,8 +125,16 @@
   
   .search-input:focus {
     outline: none;
-    border-color: #6c63ff;
+    border-color:rgb(76, 204, 206) ;
     box-shadow: 0 0 5px rgba(108, 99, 255, 0.3);
+  }
+
+  .share-button-container{
+    margin-right: 20px;
+  }
+  .share-button {
+    margin-right: 10px;
+    cursor: pointer;
   }
   
   @media screen and (max-width: 991px) {
@@ -144,11 +146,9 @@
 
     .hospitals-grid> * {
       width: 100%;
-      /* margin: 0 auto; */
       max-width: 600px;
       padding: 1rem;
-      margin-top: 1rem;
-      /* width: 100%; */
+    
     }
   
     .search-input {
