@@ -13,7 +13,6 @@ import { auth, signOut, signInWithGoogle } from "./components/Firebase";
 import NotFoundPage from "./components/NotFound";
 import Reviews from "./pages/Reviews";
 import AddReview from "./pages/AddReview";
-// import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   const { currentUser, setCurrentUser } = useContext(AuthContext);

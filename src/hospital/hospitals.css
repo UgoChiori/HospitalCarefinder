@@ -137,6 +137,20 @@
     cursor: pointer;
   }
   
+  .rating {
+    
+    color: rgb(22, 21, 11);
+    font-size: 20px;
+  }
+.filled-star{
+  margin-right: 5px;
+}
+  .empty-star {
+    margin-right: 5px;
+    color: lightgray;
+  }
+
+
   @media screen and (max-width: 991px) {
     .hospitals-grid {
       display: grid;
