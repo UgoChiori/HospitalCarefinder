@@ -1,13 +1,13 @@
 import React from "react";
 import "./homepage.css";
 import { AiOutlineSearch } from "react-icons/ai";
-import { GiDoctorFace, GiHospital } from "react-icons/gi";
+import { GiDoctorFace, GiHospital} from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
+import { AiOutlinePlus } from "react-icons/ai";
+
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
-
-
 
   return (
     <div className="careheader_container">
@@ -32,26 +32,16 @@ const HomePage: React.FC = () => {
         </div>
         <div className="careheader_select">
           <div className="careheader_item">
-            <GiHospital className="careheader_select_icon" />
-            <p
-              onClick={() => {
-                console.log("clicked view reviews")
-                navigate("/reviews");
-              }}
-            >
-              Read Review
-            </p>
+            <GiDoctorFace className="careheader_select_icon" />
+            <p onClick={() => navigate("/reviews")}>Read Review</p>
           </div>
           <div className="careheader_item">
-            <GiDoctorFace className="careheader_select_icon" />
-            <p
-              onClick={() => {
-                console.log("clicked add review")
-                navigate("/addreview");
-              }}
-            >
-              Add Review
-            </p>
+            <AiOutlinePlus className="careheader_select_icon" />
+            <p onClick={() => navigate("/addreview")}>Add Review</p>
+          </div>
+          <div className="careheader_item">
+            <GiHospital className="careheader_select_icon" />
+            <p onClick={() => navigate("/addhospital")}>Add Hospital</p>
           </div>
         </div>
       </div>

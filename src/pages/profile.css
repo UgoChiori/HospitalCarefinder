@@ -1,0 +1,8 @@
+.profile-page-container{
+    background: url(../photos/background.jpg);
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+
+}

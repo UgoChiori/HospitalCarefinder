@@ -69,12 +69,9 @@ input {
     transition: all 0.3s ease 0s;
 }
 
-.signup-methods:hover {
-    background: darkturquoise;
-    color: white;
-    border: none;
-    box-shadow: 0px 15px 20px rgba(68, 22, 115, 0.4);
-    transform: translateY(-7px);
+.signup-methods button:hover {
+    background: white;
+    color: darkturquoise;
 }
 .linkback {
     color: black;

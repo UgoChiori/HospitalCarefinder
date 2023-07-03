@@ -77,7 +77,10 @@ input {
     transform: translateY(-7px);
 }
 .linkback {
-    color: white;
+    /* color: white; */
+    cursor: pointer;
+    text-align: center;
+    text-decoration: underline;
 }
 
 .welcome-container {

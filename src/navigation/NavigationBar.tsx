@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CgDetailsMore } from 'react-icons/cg';
 import { ImCancelCircle } from 'react-icons/im';
+import { useNavigate } from 'react-router-dom';
 import { MdLogout } from 'react-icons/md';
 import { RiArrowDownSFill } from 'react-icons/ri';
 import { RxAvatar } from 'react-icons/rx';
@@ -23,6 +24,7 @@ const NavigationBar: React.FC<NavbarProps> = ({ signOut, user }) => {
   const [show, setShow] = useState(false);
   const [open, setOpen] = useState<boolean>(false);
   const [offset] = WindowOffSet();
+  const navigate = useNavigate();
 
   const handleLinkClick = () => {
     setOpen(false);
@@ -53,17 +55,33 @@ const NavigationBar: React.FC<NavbarProps> = ({ signOut, user }) => {
                 Home
               </Link>
             </li>
+            {/* <li>
+          <button onClick={(e)=>{
+            console.log("click")
+            e.preventDefault()
+            navigate('/profile')
+          }} >
+                {user ? 'Profile' : 'Login'}
+              </button>              
+            </li>
+            <li>
+            <Link to="/" onClick={handleLinkClick}>
+                {user ? 'Logout' : 'Register'}
+              </Link>             
+            </li> */}
+
+
             {user ? (
               <li>
                 <div onClick={() => setShow(!show)} className={`app_navbar_profile ${show ? 'active' : ''}`}>
                   {user && (
                     <div className="app_navbar_profile_flex">
-                      <img src={user.photoUrl} alt="profile" className="avatar" />
+                      
                       <p>
+                      <img src={user.photoUrl} alt="profile" className="avatar" />
                         {user.displayName}
                         <RiArrowDownSFill onClick={() => setToggle(!toggle)} />
-                      </p>
-                      {toggle && (
+                        {toggle && (
                         <ul id="dropdown_menu">
                           <li className="list-drop">
                             <Link to="/profile" onClick={handleLinkClick}>
@@ -79,6 +97,8 @@ const NavigationBar: React.FC<NavbarProps> = ({ signOut, user }) => {
                           </li>
                         </ul>
                       )}
+                      </p>
+                    
                     </div>
                   )}
                 </div>

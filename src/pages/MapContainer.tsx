@@ -38,6 +38,7 @@ const MapContainer = ({ hospitals }: { hospitals: Hospital[] }) => {
   }, [map, hospitals]);
 
   const googleMapsApiKey = import.meta.env.REACT_APP_GOOGLE_MAPS_API_KEY as string;
+  // const googleMapsApiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY as string;
 
   return (
     <div>
