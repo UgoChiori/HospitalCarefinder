@@ -1,7 +1,7 @@
 .add-review-container {
     background: url(../photos/background.jpg);
     background-repeat: no-repeat;
-    height: 100vh;
+    height: 120vh;
     display: grid;
     place-items: center;
 }
@@ -24,6 +24,7 @@
 
 .review-heading {
     text-align: center;
+    color: rgb(235, 147, 243) ;
 }
 
 
@@ -31,6 +32,14 @@
     margin-right: 200px;
     padding: 0.5rem 1rem;
     cursor: pointer;
+    color: rgb(235, 147, 243);
+    background: white;
+    border: 1px solid rgb(235, 147, 243);
+    border-radius: 8px;
+    font-weight: 600;
+    margin: 1rem 0;
+    transition: 0.2s ease;
+ 
 
 }
 
@@ -42,7 +51,7 @@
 }
 
 .star.active {
-    color: darkturquoise;
+    color: rgb(235, 147, 243);
 
     cursor: pointer;
     transition: 0.2s ease;
@@ -69,5 +78,4 @@
     .review-heading {
         text-align: center;
     }
-  
 }
