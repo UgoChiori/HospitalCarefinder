@@ -4,7 +4,9 @@ import HospitalCard from "../hospital/HospitalCard";
 import "./hospitals.css";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaWhatsapp, FaEnvelope, FaLink } from "react-icons/fa";
+// import StreetViewMap from "../pages/MapContainer";
 import MapContainer from "../pages/MapContainer";
+
 
 interface HospitalProps {
   handleDetails: any;
@@ -221,8 +223,13 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
         </div>
       </div>
       <div>
-        {/* <MapContainer hospitals={testHospitals} /> */}
-        <MapContainer hospitals={testHospitals} />
+
+       
+        <MapContainer hospitals={[...filteredHospitals]}        
+
+         />
+        
+        
       </div>
     </div>
   );

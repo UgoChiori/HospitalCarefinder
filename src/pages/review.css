@@ -3,7 +3,7 @@
  .hospital-review-card-container {
     background: url(../photos/background.jpg);
     background-repeat: no-repeat;
-    height: 120vh;
+    height: 150vh;
     display: grid;
     place-items: center;
     text-align: center;
@@ -43,6 +43,13 @@
     margin-bottom: 10px;
   }
 
+  .review-head{
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
+
 
   @media screen and (max-width: 991px) {
     .hospital-review-card {
@@ -60,7 +67,6 @@
       .hospital-review-card-container {
         background: url(../photos/background.jpg);
         background-repeat: no-repeat;
-        height: 180vh;
         display: grid;
         place-items: center;
         text-align: center;

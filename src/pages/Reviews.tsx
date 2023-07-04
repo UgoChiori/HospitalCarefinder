@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./review.css";
-
 import {
   DocumentData,
   QueryDocumentSnapshot,
@@ -14,6 +13,7 @@ interface Review {
   "Hospital Name": string;
   Rating: number;
   "Review Text": string;
+  UserName: string; // Add the UserName field to the Review interface
 }
 
 const Reviews = () => {
@@ -31,6 +31,7 @@ const Reviews = () => {
             "Hospital Name": doc.data()["Hospital Name"],
             Rating: doc.data().Rating,
             "Review Text": doc.data()["Review Text"],
+            UserName: doc.data().UserName // Populate the UserName field
           })
         );
         setReviews(fetchedReviews);
@@ -44,14 +45,14 @@ const Reviews = () => {
 
   return (
     <div className="hospital-review-card-container">
-    <h2>Reviews</h2>
+      <h2 className="review-head">Reviews</h2>
       <div className="hospital-review-card">
-     
         {/* Render the reviews */}
         {reviews.map((review) => (
           <div key={review.id} className="hospital-review-grid">
             <h3>{review["Hospital Name"]}</h3>
             <p>Rating: {review.Rating}</p>
+            <p>Reviewed By: {review.UserName}</p> {/* Display the user name */}
             <p>{review["Review Text"]}</p>
           </div>
         ))}

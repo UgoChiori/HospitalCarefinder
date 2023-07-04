@@ -44,7 +44,7 @@ const ReviewEditor = () => {
         "Hospital Name": hospitalName,
         Rating: rating,
         "Review Text": reviewText,
-        "User Name": userName,
+        "UserName": userName,
       };
 
       await addDoc(collection(db, "reviews"), reviewData);
@@ -56,6 +56,7 @@ const ReviewEditor = () => {
       setHospitalName("");
       setRating(0);
       setReviewText("");
+      setUserName("");
       navigate("/reviews");
     } catch (error) {
       console.error("Error adding review: ", error);
