@@ -5,6 +5,7 @@
     height: 100vh;
     display: grid;
     place-items: center;
+  
 
 
 }
@@ -19,7 +20,7 @@
 
 .careheader_heading,
 .heading_para {
-    color: darkturquoise;
+    color: rgb(235, 147, 243);
 }
 
 .careheader_heading {
@@ -67,7 +68,7 @@
 
 .careheader_item {
     color: #fff;
-    background-color: darkturquoise;
+    background-color: rgb(235, 147, 243);
     padding: 8px 12px;
     text-align: center;
     border-radius: 10px;
@@ -76,24 +77,11 @@
 }
 
 .careheader_item:hover {
-    background-color: rgb(107, 190, 192);
+    background-color: rgb(235, 147, 243);
     cursor: pointer;
     transition: ease-in-out 0.3s;
 
 }
-
-/* .careheader_select_icon {
-    font-size: 30px;
-
-
-} */
-
-/* .careheader_select_icon:hover {
-    color: rgb(147, 230, 232);
-    cursor: pointer;
-    transition: ease-in-out 0.3s;
-   
-} */
 
 
 .carephoto {

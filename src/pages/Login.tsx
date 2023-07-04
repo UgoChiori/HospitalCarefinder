@@ -128,7 +128,7 @@ const Login: React.FC<SigninFormProps> = () => {
         ) : (
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <h1>Log In</h1>
+              <h1 className="login">Log In</h1>
               <label htmlFor="email">Email</label>
               <input
                 type="email"
@@ -154,7 +154,7 @@ const Login: React.FC<SigninFormProps> = () => {
                 </span>
               )}
             </div>
-            <div className="form-group">
+            <div className="login-methods">
               <button type="submit">Sign In</button>
             </div>
           </form>
@@ -173,7 +173,7 @@ const Login: React.FC<SigninFormProps> = () => {
             border: "none",
             textDecoration: "none",
             fontSize: "0.8rem",
-            color: "darkturquoise ",
+            color: "rgb(235, 147, 243) ",
           }}
           className="reset-password"
           onClick={handleResetPasssword}

@@ -11,7 +11,7 @@
 
 .details-card {
 
-  background: darkturquoise;
+  background: rgb(235, 147, 243);
   width: 50%;
   margin-top: 2.5rem;
   padding: 1rem;
@@ -60,7 +60,7 @@
 
 .hospital-button, .csv{
 
-  background-color: darkturquoise;
+  background-color: rgb(235, 147, 243);
   color: #fff;
   padding: 1rem;
   border-radius: 5px;

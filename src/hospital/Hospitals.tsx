@@ -9,7 +9,7 @@ import MapContainer from "../pages/MapContainer";
 
 
 interface HospitalProps {
-  handleDetails: any;
+  handleDetails: (place_id: string) => void;
 }
 
 const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {

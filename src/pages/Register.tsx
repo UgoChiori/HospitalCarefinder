@@ -99,7 +99,7 @@ const RegistrationForm = () => {
   return (
     <div className="registration-form-wrapper">
       <div className="registration-form">
-        <h1>Register</h1>
+        <h1 className="register">Register</h1>
         {registered ? (
           <div>
             <h1>Welcome, {name || ""}!</h1>
