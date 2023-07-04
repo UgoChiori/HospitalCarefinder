@@ -10,7 +10,8 @@ const mdParser = new MarkdownIt();
 
 const AddHospitals = () => {
   const [value, setValue] = useState("");
-  const handleEditorChange = ({ html, text }: { html: any; text: any }) => {
+
+  const handleEditorChange = ({ text }: { html: any; text: any }) => {
     setValue(text);
   };
 
