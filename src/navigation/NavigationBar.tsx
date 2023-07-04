@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CgDetailsMore } from 'react-icons/cg';
 import { ImCancelCircle } from 'react-icons/im';
-
 import { MdLogout } from 'react-icons/md';
 import { RiArrowDownSFill } from 'react-icons/ri';
 import { RxAvatar } from 'react-icons/rx';

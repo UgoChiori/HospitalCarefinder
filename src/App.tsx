@@ -1,5 +1,5 @@
 import { useEffect, useContext, useState } from "react";
-import { Routes, Route,  Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import HomePage from "./landingpage/HomePage";
 import Login from "./pages/Login";
 import Hospitals from "./hospital/Hospitals";
@@ -13,14 +13,11 @@ import { auth, signOut, signInWithGoogle } from "./components/Firebase";
 import NotFoundPage from "./components/NotFound";
 import Reviews from "./pages/Reviews";
 import AddReview from "./pages/AddReview";
-import AddHospitals from "./pages/AddHospitals";
 import Profile from "./pages/Profile";
 
 function App() {
   const { currentUser, setCurrentUser } = useContext(AuthContext);
   const [details, setDetails] = useState();
-
-
 
   let count = localStorage.getItem("page_views");
   if (count === null) {
@@ -99,7 +96,6 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/addreview" element={<AddReview />} />
-          <Route path="/addhospital" element={<AddHospitals />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

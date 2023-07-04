@@ -1,41 +1,71 @@
-import { useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../components/Firebase";
 import "./addreviews.css";
 import { useNavigate } from "react-router-dom";
+import MdEditor from "react-markdown-editor-lite";
+import "react-markdown-editor-lite/lib/index.css";
+import MarkdownIt from "markdown-it";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { FaStar } from "react-icons/fa";
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
+
+
+
+const mdParser = new MarkdownIt();
+
 
 
 const ReviewEditor = () => {
   const [hospitalName, setHospitalName] = useState("");
   const [rating, setRating] = useState(0);
   const [reviewText, setReviewText] = useState("");
+  const [userName, setUserName] = useState("");
   const navigate = useNavigate();
 
+
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUserName(user.displayName || "");
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+  
   const handleReviewSubmit = async () => {
     try {
       const reviewData = {
         "Hospital Name": hospitalName,
         Rating: rating,
         "Review Text": reviewText,
+        "User Name": userName,
       };
 
       await addDoc(collection(db, "reviews"), reviewData);
 
       console.log("Review added successfully!");
+      
 
       // Reset input fields
       setHospitalName("");
       setRating(0);
       setReviewText("");
-      navigate('/reviews');
+      navigate("/reviews");
     } catch (error) {
       console.error("Error adding review: ", error);
     }
   };
+
+  const handleStarClick = (selectedRating: SetStateAction<number>) => {
+    setRating(selectedRating);
+  };
+  
 
   return (
     <div className="add-review-container">
@@ -52,28 +82,35 @@ const ReviewEditor = () => {
         </div>
         <div>
           <label htmlFor="rating">Rating:</label>
-          <input
-            type="number"
-            id="rating"
-            value={rating}
-            onChange={(e) => setRating(Number(e.target.value))}
-          />
+          <div>
+            {[1, 2, 3, 4, 5].map((star) => (
+              <FaStar
+                key={star}
+                className={star <= rating ? "star active" : "star"}
+                // onClick={() => setRating(i + 1)}
+                onClick={() => handleStarClick(star)}
+              />
+            ))}
+          </div>
         </div>
         <div>
           <label htmlFor="reviewText">Review Text:</label>
-          <textarea
-            className="review-text"
-            placeholder="Write review text"
-            id="reviewText"
+          <MdEditor
             value={reviewText}
-            onChange={(e) => setReviewText(e.target.value)}
+            renderHTML={(text) => mdParser.render(text)}
+            onChange={({ text }) => setReviewText(text)}
+            style={{ height: "300px" }}
+            className="review-editor"
           />
         </div>
-        <button id="submit-review-btn" onClick={handleReviewSubmit}>Submit Review</button>
+        <button id="submit-review-btn" onClick={handleReviewSubmit}>
+          Submit Review
+        </button>
       </div>
-      
     </div>
   );
 };
 
 export default ReviewEditor;
+
+
