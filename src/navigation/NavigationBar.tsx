@@ -54,20 +54,7 @@ const NavigationBar: React.FC<NavbarProps> = ({ signOut, user }) => {
                 Home
               </Link>
             </li>
-            {/* <li>
-          <button onClick={(e)=>{
-            console.log("click")
-            e.preventDefault()
-            navigate('/profile')
-          }} >
-                {user ? 'Profile' : 'Login'}
-              </button>              
-            </li>
-            <li>
-            <Link to="/" onClick={handleLinkClick}>
-                {user ? 'Logout' : 'Register'}
-              </Link>             
-            </li> */}
+          
 
 
             {user ? (

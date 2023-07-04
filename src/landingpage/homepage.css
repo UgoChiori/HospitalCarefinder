@@ -55,7 +55,7 @@
     text-decoration: underline;
 }
 
-.careheader_select {
+ .careheader_select {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -77,24 +77,23 @@
 
 .careheader_item:hover {
     background-color: rgb(107, 190, 192);
-
     cursor: pointer;
     transition: ease-in-out 0.3s;
 
 }
 
-.careheader_select_icon {
+/* .careheader_select_icon {
     font-size: 30px;
 
 
-}
+} */
 
-.careheader_select_icon:hover {
+/* .careheader_select_icon:hover {
     color: rgb(147, 230, 232);
     cursor: pointer;
     transition: ease-in-out 0.3s;
    
-}
+} */
 
 
 .carephoto {
