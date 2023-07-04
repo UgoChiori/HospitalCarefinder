@@ -15,16 +15,16 @@ const AddHospitals = () => {
     setValue(text);
   };
 
-  const handleSubmit = async () => {
-    try {
-      const newDocRef = doc(collection(db, "hospital"));
-      await setDoc(newDocRef, { content: value });
-      console.log("Document creation successful");
-      setValue("");
-    } catch (error) {
-      console.error("Document creation error:", error);
-    }
-  };
+  // const handleSubmit = async () => {
+  //   try {
+  //     const newDocRef = doc(collection(db, "hospital"));
+  //     await setDoc(newDocRef, { content: value });
+  //     console.log("Document creation successful");
+  //     setValue("");
+  //   } catch (error) {
+  //     console.error("Document creation error:", error);
+  //   }
+  // };
 
 
 
