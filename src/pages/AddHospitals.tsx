@@ -3,8 +3,6 @@ import MarkdownIt from "markdown-it";
 import MdEditor from "react-markdown-editor-lite";
 import "react-markdown-editor-lite/lib/index.css";
 import "./addhospitals.css";
-import { db } from "../components/Firebase";
-import { collection, doc, setDoc} from "firebase/firestore";
 
 const mdParser = new MarkdownIt();
 
