@@ -2,15 +2,11 @@
     background: url(../photos/carefinder1.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    height: 120vh;
+    height: 100vh;
     display: grid;
     place-items: center;
 
-
-
 }
-
-
 
 .careheader_head {
     text-align: center;
@@ -64,6 +60,7 @@
     width: 100%;
     margin-top: 1.5rem;
     gap: 1rem;
+   
 }
 
 .careheader_item {
@@ -85,8 +82,7 @@
 
 
 .carephoto {
-
-    position: absolute;
+     position: absolute;
     width: 816px;
     height: 603px;
     left: 624px;
@@ -131,13 +127,22 @@
     .careheader_select {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        width: 100%;
         gap: 1rem;
+        margin-top: 1.5rem;
 
 
     }
 
     .careheader_item {
-        margin-bottom: 1rem;
+        /* margin-bottom: 1rem; */
+        color: #fff;
+        background-color: darkturquoise;
+        padding: 8px 12px;
+        text-align: center;
+        border-radius: 10px;
+        width: 100%;
+        cursor: pointer;
     }
 
     .careheader_select_icon {
@@ -148,31 +153,13 @@
         background: url(../photos/background.jpg);
         background-size: cover;
         background-repeat: no-repeat;
-        height: 125vh;
+        height: 100vh;
         display: grid;
         place-items: center;
     }
     .careheader_healthtips {
-        /* height: 200px;
-        width: 300px; */
-        background: darkturquoise;
-        color: #fff;
-        text-align: center;
-        line-height: 200px;
-        border-radius: 8px;
-        position: fixed;
-        padding: 8px;
-        right: 10px;
-        bottom: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        margin-right: 56px;
+       
+        display: none;
        }
-       .careheader_healthtips p {
-        font-size: 14px;
-
-       }
-
+      
 }
