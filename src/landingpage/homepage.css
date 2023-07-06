@@ -114,7 +114,10 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    
+}
+
+.careheader_healthtips p {
+    font-size: 14px;
 
 }
 
@@ -149,5 +152,26 @@
         display: grid;
         place-items: center;
     }
+    .careheader_healthtips {
+        /* height: 200px;
+        width: 300px; */
+        background: darkturquoise;
+        color: #fff;
+        text-align: center;
+        line-height: 200px;
+        border-radius: 8px;
+        position: fixed;
+        padding: 8px;
+        right: 10px;
+        bottom: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+       }
+       .careheader_healthtips p {
+        font-size: 14px;
+
+       }
 
 }
