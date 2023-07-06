@@ -1,13 +1,13 @@
 import React from "react";
 import "./homepage.css";
 import { AiOutlineSearch } from "react-icons/ai";
-// import { GiDoctorFace } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
-// import { AiOutlinePlus } from "react-icons/ai";
-import { healthtips } from "../Healthtips";
+// import { healthtips } from "../Healthtips";
+
+
 
 const HomePage: React.FC = () => {
-  const randomNum = Math.floor(Math.random() * Math.floor(healthtips.length));
+  // const randomNum = Math.floor(Math.random() * Math.floor(healthtips.length));
 
   const navigate = useNavigate();
 
@@ -35,21 +35,17 @@ const HomePage: React.FC = () => {
           </div>
           <div className="careheader_select">
             <div className="careheader_item">
-              {/* <GiDoctorFace className="careheader_select_icon" /> */}
-
-              <a href="/reviews">Reviews</a>
+              <a href="/reviews" className="reviews">Reviews</a>
             </div>
             <div className="careheader_item">
-              {/* <AiOutlinePlus className="careheader_select_icon" /> */}
-
-              <a href="/addreview">Add Review</a>
+              <a href="/addreview" className="reviews">Add Review</a>
             </div>
           </div>
         </div>
       </div>
-      <div className="careheader_healthtips">
+      {/* <div className="careheader_healthtips">
         <p>{healthtips[randomNum].title}</p>
-      </div>
+      </div> */}
     </div>
   );
 };

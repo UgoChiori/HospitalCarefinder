@@ -24,7 +24,7 @@
 
 .review-heading {
     text-align: center;
-    color: darkturquoise ;
+    color: rgb(30, 167, 170) ;
 }
 
 
@@ -32,9 +32,9 @@
     margin-right: 200px;
     padding: 0.5rem 1rem;
     cursor: pointer;
-    color: darkturquoise;
+    color: rgb(30, 167, 170);
     background: white;
-    border: 1px solid darkturquoise;
+    border: 1px solid rgb(30, 167, 170);
     border-radius: 8px;
     font-weight: 600;
     margin: 1rem 0;
@@ -51,7 +51,7 @@
 }
 
 .star.active {
-    color: darkturquoise;
+    color: rgb(30, 167, 170);
 
     cursor: pointer;
     transition: 0.2s ease;

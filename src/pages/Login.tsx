@@ -170,10 +170,15 @@ const Login: React.FC<SigninFormProps> = () => {
         <a
           href=""
           style={{
-            border: "none",
-            textDecoration: "none",
+           
+            textDecoration: "underline",
             fontSize: "0.8rem",
-            color: "darkturquoise",
+            color: "rgb(30, 167, 170)",
+            textAlign: "center",
+            alignItems: "center",
+            justifyContent: "center",
+            display: "flex",
+
           }}
           className="reset-password"
           onClick={handleResetPasssword}

@@ -9,7 +9,7 @@
 .register {
     text-align: center;
     margin-bottom: 20px;
-    color: darkturquoise;
+    color:  rgb(30, 167, 170);
 }
 
 .registration-form {
@@ -19,7 +19,7 @@
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border: 2px solid darkturquoise;
+    border: 2px solid rgb(30, 167, 170);
 
 }
 
@@ -30,7 +30,7 @@ h1 {
 }
 .eye-icon{
     cursor: pointer;
-    color: darkturquoise;    
+    color: rgb(30, 167, 170);    
 }
 p{
     font-size: 10px;
@@ -61,11 +61,15 @@ input {
     padding: 8px;
     font-size: 16px;
     border-radius: 4px;
-    background: darkturquoise;
+    background: rgb(30, 167, 170);
     color: white;
     cursor: pointer;
-    transition: all 0.3s ease 0s;
 
+  }
+
+.signup-methods button:hover {
+    text-decoration: underline;
+    color: white;
 }
 .signup-methods {
     border: none;
@@ -74,16 +78,19 @@ input {
     padding: 8px;
     font-size: 16px;
     border-radius: 4px;
-    background: darkturquoise;
+    background:rgb(30, 167, 170);
     color: white;
     cursor: pointer;
-    transition: all 0.3s ease 0s;
+   
 }
 
-.signup-methods button:hover {
-    background: white;
-    color: darkturquoise;
+.signup-methods:hover {
+    text-decoration: underline;
+    color: white;
 }
+
+
+
 .linkback {
     color: black;
 }
@@ -93,7 +100,7 @@ input {
 @media screen and (max-width: 991px) {
     .registration-form {
         max-width: 300px;
-        border: 4px solid darkturquoise;
+        border: 4px solid rgb(30, 167, 170);
         margin-top: 100px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 10);
     }

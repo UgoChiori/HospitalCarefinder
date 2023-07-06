@@ -1,6 +1,4 @@
-
-
- .hospital-review-card-container {
+.hospital-review-card-container {
     background: url(../photos/background.jpg);
     background-repeat: no-repeat;
     height: 150vh;
@@ -46,23 +44,32 @@
     text-align: center;
     font-size: 2rem;
     font-weight: 600;
-    margin-bottom: 2rem;
+    margin-top: 9rem;
   }
 
 
   @media screen and (max-width: 991px) {
+
+    .review-head{
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-top: 10rem;
+    }
     .hospital-review-card {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns per row */
+    }
+    /* .hospital-review-card {
         background-size: cover;
         background-repeat: no-repeat;
         position: relative;
         display: grid;
         grid-template-columns: 1fr;
         gap: 20px;
-        justify-items: center; /* Center the cards horizontally */
-        padding: 1rem;
+        justify-items: center; 
       
        
-      }
+      } */
       .hospital-review-card-container {
         background: url(../photos/background.jpg);
         background-repeat: no-repeat;
