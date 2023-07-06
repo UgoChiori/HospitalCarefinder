@@ -124,7 +124,6 @@
     }
 
     .careheader_item {
-     
         color: #fff;
         background-color: rgb(30, 167, 170);
         padding: 8px 12px;
@@ -134,10 +133,12 @@
         cursor: pointer;
        
     }
-
+.reviews{
+    font-size: 12px;
+    text-align: center;
+}
   
-
-    .careheader_container {
+ .careheader_container {
         background: url(../photos/background.jpg);
         background-size: cover;
         background-repeat: no-repeat;
@@ -145,9 +146,5 @@
         display: grid;
         place-items: center;
     }
-    .careheader_healthtips {
-       
-        display: none;
-       }
-      
+  
 }
