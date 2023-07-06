@@ -2,6 +2,7 @@ import "./hospitals.css";
 import { useNavigate } from "react-router-dom";
 
 type Props = {
+  
   name: any;
   status: any;
   rating: any;
@@ -15,11 +16,11 @@ const RatingStars = ({ rating }: { rating: number }) => {
   const emptyStars = "☆".repeat(5 - rating);
   const stars = filledStars + emptyStars;
 
-  
   return <div className="rating">{stars}</div>;
 };
 
 export default function HospitalCard({
+  
   name,
   status,
   rating,
@@ -34,6 +35,7 @@ export default function HospitalCard({
       <h2>{status}</h2>
       <p>{formatted_address}</p>
       <RatingStars rating={rating} />
+    
 
       <button
         onClick={() => {

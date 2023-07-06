@@ -88,7 +88,7 @@ const ReviewEditor = () => {
               <FaStar
                 key={star}
                 className={star <= rating ? "star active" : "star"}
-                // onClick={() => setRating(i + 1)}
+               
                 onClick={() => handleStarClick(star)}
               />
             ))}

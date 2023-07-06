@@ -6,7 +6,7 @@ import { MdLogout } from 'react-icons/md';
 import { RiArrowDownSFill } from 'react-icons/ri';
 import { RxAvatar } from 'react-icons/rx';
 import './navigationbar.css';
-import carefinder0 from '../photos/carefinder0.png';
+import carefinderlogoo from '../photos/carefinderlogoo.jpg';
 
 interface User {
   displayName: string;
@@ -44,7 +44,7 @@ const NavigationBar: React.FC<NavbarProps> = ({ signOut, user }) => {
       <div className="nav_wrapper">
         <h1 className="nav_header">
           CareFinder.{' '}
-          <img src={carefinder0} alt="logo" className="carefinderlogoo" width={40} style={{ background: 'darkTurquoise' }} />
+          <img src={carefinderlogoo} alt="logo" className="carefinderlogoo" width={40} style={{ background: 'darkTurquoise' }} />
         </h1>
 
         <div className={`nav_ul ${open ? 'active' : ''}`}>
@@ -64,7 +64,7 @@ const NavigationBar: React.FC<NavbarProps> = ({ signOut, user }) => {
                     <div className="app_navbar_profile_flex">
                       
                       <p>
-                      <img src={user.photoUrl} alt="profile" className="avatar" />
+                      <img src={user.photoUrl} alt="profile" className="avatar"  />
                         {user.displayName}
                         <RiArrowDownSFill onClick={() => setToggle(!toggle)} />
                         {toggle && (

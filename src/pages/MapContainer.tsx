@@ -1,122 +1,3 @@
-// import{ useState, useEffect } from "react";
-// import { LoadScript, GoogleMap, Marker, StreetViewPanorama } from "@react-google-maps/api";
-
-// interface Hospital {
-//   place_id: string;
-//   geometry: {
-//     location: {
-//       lat: number;
-//       lng: number;
-//     };
-//   };
-// }
-
-// const MapContainer = ({ hospitals }: { hospitals: Hospital[] }) => {
-//   console.log(hospitals)
-//   const [map, setMap] = useState<google.maps.Map | null>(null);
-
-//   const mapStyles = {
-//     height: "400px",
-//     width: "100%",
-//   };
-
-//   const defaultCenter = {
-//     lat: 6.5244,
-//     lng: 3.3792,
-//   };
-
-//   useEffect(() => {
-//     if (map && hospitals.length > 0) {
-//       const bounds = new window.google.maps.LatLngBounds();
-//       hospitals.forEach((hospital: {
-//         geometry: { location: { lat: any; lng: any } };
-//       }) => {
-//         const { lat, lng } = hospital.geometry.location;
-//         bounds.extend(new window.google.maps.LatLng(lat, lng));
-//       });
-//       (map as google.maps.Map).fitBounds(bounds);
-//     }
-//   }, [map, hospitals]);
-
-//   const googleMapsApiKey = import.meta.env.VITE_API_KEY;
-
-
-//   return (
-//     <div>
-//       <LoadScript googleMapsApiKey={googleMapsApiKey}>
-//         <GoogleMap
-//           mapContainerStyle={mapStyles}
-//           zoom={13}
-//           center={defaultCenter}
-//           onLoad={(map) => setMap(map)}
-//         >
-//           {hospitals &&
-//             hospitals.map((hospital: Hospital) => (
-//               <Marker
-//                 key={hospital.place_id}
-//                 position={hospital.geometry.location}
-//               />
-//             ))}
-//         </GoogleMap>
-//       </LoadScript>
-//     </div>
-//   );
-// };
-
-// export default MapContainer;
-
-
-
-// function StreetViewMap() {
-//   const googleMapsKey = "AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY";
-//   const StreetMapOptions = {
-//     position: { lat: 55.8271775, lng: 20.742731 },
-//     pov: { heading: 100, pitch: 0 },
-//     zoom: 1,
-//   };
-//   return (
-//     <div>
-//       <div
-//         style={{
-//           width: "850px",
-//           height: "550px",
-//           backgroundColor: "#cccccc",
-//         }}
-//       >
-//         <StreetViewPanorama
-//           options={StreetMapOptions}
-//           googleMapsKey={googleMapsKey}
-//           />
-//       </div>
-//     </div>
-//   );
-// }
-// export default StreetViewMap;
-
-// import React from "react";
-// import { LoadScript, StreetViewPanorama } from "@react-google-maps/api";
-
-// const StreetViewMap = () => {
-//   const googleMapsApiKey = "AIzaSyDYL048QSsNPEHs_crrIeZfrYH5_Qsh2Nk";
-
-//   const streetViewOptions = {
-//     position: { lat: 55.8271775, lng: 20.742731 },
-//     pov: { heading: 100, pitch: 0 },
-//     zoom: 1,
-//   };
-
-//   return (
-//     <div style={{ height: "400px" }}>
-//       <LoadScript googleMapsApiKey={googleMapsApiKey}>
-//         <StreetViewPanorama options={streetViewOptions} />
-//       </LoadScript>
-//     </div>
-//   );
-// };
-
-// export default StreetViewMap;
-
-
 import { useState, useEffect } from "react";
 import { LoadScript, GoogleMap, Marker, StreetViewPanorama } from "@react-google-maps/api";
 
@@ -166,14 +47,11 @@ const MapContainer = ({ hospitals }: { hospitals: Hospital[] }) => {
 
   const googleMapsApiKey = "AIzaSyDYL048QSsNPEHs_crrIeZfrYH5_Qsh2Nk";
 
-  // const markerIcon = {
-  //   path: "M10 2C5.032 2 1 6.032 1 11c0 4.969 4.032 9 9 9 4.969 0 9-4.031 9-9 0-4.968-4.031-9-9-9zm0 16c-3.859 0-7-3.14-7-7 0-3.858 3.141-7 7-7 3.86 0 7 3.142 7 7 0 3.86-3.14 7-7 7z",
-  //   fillColor: "#FF0000",
-  //   fillOpacity: 1,
-  //   strokeWeight: 0,
-  //   scale: 1.5,
-  //   labelOrigin: new window.google.maps.Point(10, 10),
-  // };
+
+  // const googleMapsApiKey = import.meta.env.VITE_API_KEY;
+
+
+  
 
 
   return (

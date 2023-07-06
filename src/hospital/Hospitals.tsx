@@ -4,7 +4,6 @@ import HospitalCard from "../hospital/HospitalCard";
 import "./hospitals.css";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaWhatsapp, FaEnvelope, FaLink } from "react-icons/fa";
-// import StreetViewMap from "../pages/MapContainer";
 import MapContainer from "../pages/MapContainer";
 
 
@@ -137,6 +136,7 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
     getLocation();
   }, []);
 
+  // SHARE HOSPITALS VIA WHATSAPP
   const handleShare = () => {
     const hospitalData = testHospitals
       .map((hospital) => hospital.name)
@@ -225,9 +225,7 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
       <div>
 
        
-        <MapContainer hospitals={[...filteredHospitals]}        
-
-         />
+        <MapContainer hospitals={[...filteredHospitals]}  />
         
         
       </div>
@@ -236,3 +234,7 @@ const Hospitals: React.FC<HospitalProps> = ({ handleDetails }) => {
 };
 
 export default Hospitals;
+
+
+
+

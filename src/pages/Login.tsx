@@ -173,7 +173,7 @@ const Login: React.FC<SigninFormProps> = () => {
             border: "none",
             textDecoration: "none",
             fontSize: "0.8rem",
-            color: "rgb(235, 147, 243) ",
+            color: "darkturquoise",
           }}
           className="reset-password"
           onClick={handleResetPasssword}
