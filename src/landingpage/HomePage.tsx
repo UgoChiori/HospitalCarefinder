@@ -1,9 +1,9 @@
 import React from "react";
 import "./homepage.css";
 import { AiOutlineSearch } from "react-icons/ai";
-import { GiDoctorFace } from "react-icons/gi";
+// import { GiDoctorFace } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
-import { AiOutlinePlus } from "react-icons/ai";
+// import { AiOutlinePlus } from "react-icons/ai";
 import { healthtips } from "../Healthtips";
 
 const HomePage: React.FC = () => {
@@ -35,12 +35,12 @@ const HomePage: React.FC = () => {
           </div>
           <div className="careheader_select">
             <div className="careheader_item">
-              <GiDoctorFace className="careheader_select_icon" />
+              {/* <GiDoctorFace className="careheader_select_icon" /> */}
 
               <a href="/reviews">Reviews</a>
             </div>
             <div className="careheader_item">
-              <AiOutlinePlus className="careheader_select_icon" />
+              {/* <AiOutlinePlus className="careheader_select_icon" /> */}
 
               <a href="/addreview">Add Review</a>
             </div>
