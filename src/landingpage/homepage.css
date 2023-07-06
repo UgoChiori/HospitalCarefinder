@@ -168,6 +168,7 @@
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+        margin-right: 56px;
        }
        .careheader_healthtips p {
         font-size: 14px;
