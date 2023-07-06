@@ -17,23 +17,23 @@ type Props = {
 
 const HospitalDetails: React.FC<Props> = ({
   placeId,
-  name,
-  business_status,
-  vicinity,
-  rating,
+  // name,
+  // business_status,
+  // vicinity,
+  // rating,
   details,
-  opening_hours,
+  // opening_hours,
 }: Props) => {
-  const hospitalData = [
-    {
-      placeId: placeId,
-      name: name,
-      business_status: business_status,
-      rating: rating,
-      vicinity: vicinity,
-      opening_hours: opening_hours,
-    },
-  ];
+  // const hospitalData = [
+  //   {
+  //     placeId: placeId,
+  //     name: name,
+  //     business_status: business_status,
+  //     rating: rating,
+  //     vicinity: vicinity,
+  //     opening_hours: opening_hours,
+  //   },
+  // ];
 
   const [loading, setLoading] = useState(true);
   const [hospitalDetails, setHospitalDetails] = useState<any>(null);
@@ -94,11 +94,7 @@ const HospitalDetails: React.FC<Props> = ({
     navigate("/profile");
   };
 
-  // Retrieve saved hospital details from local storage
-  const storedHospitalDetails = localStorage.getItem("savedHospitalDetails");
-  if (storedHospitalDetails) {
-    const parsedHospitalDetails = JSON.parse(storedHospitalDetails);
-  }
+  
 
   useEffect(() => {
     // Retrieve hospital details from local storage

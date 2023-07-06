@@ -89,7 +89,7 @@ function App() {
                 details={details}
                 vicinity={""}
                 opening_hours={false}
-              />
+                 placeId={""}              />
             }
           />
           <Route path="/signin" element={<Login signIn={signIn} />} />
