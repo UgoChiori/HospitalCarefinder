@@ -25,7 +25,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const analytics = getAnalytics(app);
 logEvent(analytics, "notification_received");
-
 export const auth = getAuth();
 
 // Firestore

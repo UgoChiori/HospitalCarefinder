@@ -14,6 +14,7 @@ import NotFoundPage from "./components/NotFound";
 import Reviews from "./pages/Reviews";
 import AddReview from "./pages/AddReview";
 import Profile from "./pages/Profile";
+import Admin from "./pages/Admin";
 
 function App() {
   const { currentUser, setCurrentUser } = useContext(AuthContext);
@@ -97,6 +98,7 @@ function App() {
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/addreview" element={<AddReview />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </ErrorBoundary>

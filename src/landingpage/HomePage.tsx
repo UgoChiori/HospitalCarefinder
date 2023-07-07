@@ -1,7 +1,8 @@
 import React from "react";
 import "./homepage.css";
-import { AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineSearch} from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { CgGirl } from "react-icons/cg";
 // import { healthtips } from "../Healthtips";
 
 
@@ -43,6 +44,8 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </div>
+      <CgGirl className="admin" />
+      <a href="/admin" className="admin">Admin</a>
       {/* <div className="careheader_healthtips">
         <p>{healthtips[randomNum].title}</p>
       </div> */}

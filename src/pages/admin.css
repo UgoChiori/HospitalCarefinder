@@ -1,0 +1,7 @@
+.admin-review-container{
+    background: url(../photos/background.jpg);
+    background-repeat: no-repeat;
+    height: 140vh;
+    display: grid;
+    place-items: center;
+}
