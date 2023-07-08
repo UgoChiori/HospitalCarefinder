@@ -1,3 +1,8 @@
+/// <reference types="vitest" />
+/// <reference types="vite/client" />
+
+
+
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import mdPlugin from "vite-plugin-md";
@@ -18,6 +23,14 @@ export default defineConfig({
   ],
 
   assetsInclude: ["**/*.md"],
+  test: {
+    globals: true,
+    environment: "jsdom",
+    css: true,
+    setupFiles: "./src/test/setup.ts",
+
+  }
+
  
 });
 
