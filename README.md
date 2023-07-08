@@ -73,16 +73,19 @@ Once you have the Hospital Carefinder application up and running, you can perfor
 ## Testing
 
 Hospital Carefinder includes unit and component tests to ensure the reliability and correctness of its functionalities. To run the tests, use the following command:
+
 shell
 npm run test
 
 
+ ## The test suite utilizes Jest as the testing framework and includes tests for various components and functionalities of the application.
 
- 
- 
- 
- 
- 7. ## The test suite utilizes Jest as the testing framework and includes tests for various components and functionalities of the application.
+
+
+
+
+
+
 
 ## Contributing
 
