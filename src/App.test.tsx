@@ -16,6 +16,7 @@ import Register from "./pages/Register";
 import MapContainer from "./pages/MapContainer";
 import Profile from "./pages/Profile";
 import Reviews from "./pages/Reviews";
+import Unauthorized from "./pages/Unauthorized";
 
 test("renders learn react link", () => {
   render(<App />);
@@ -98,14 +99,13 @@ test("renders NavigationBar", () => {
   expect(message).toBeDefined();
 });
 
-
-
 test("renders ErrorBoundary", () => {
   render(
     <BrowserRouter>
       <ErrorBoundary
-        fallbackRender={function (
-        ): React.ReactNode | React.ReactElement<any, any> {
+        fallbackRender={function ():
+          | React.ReactNode
+          | React.ReactElement<any, any> {
           throw new Error("Function not implemented.");
         }}
       ></ErrorBoundary>
@@ -198,6 +198,16 @@ test("renders Reviews", () => {
   render(
     <BrowserRouter>
       <Reviews />
+    </BrowserRouter>
+  );
+  const message = screen.queryByText(/Home/i);
+  expect(message).toBeDefined();
+});
+
+test("renders Unauthorized", () => {
+  render(
+    <BrowserRouter>
+      <Unauthorized />
     </BrowserRouter>
   );
   const message = screen.queryByText(/Home/i);
