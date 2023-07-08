@@ -1,0 +1,33 @@
+.unauthorized-container{
+    background: url(../photos/carefinder1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+
+.unauthorized-container p {
+    font-size: 20px;
+    font-weight: 400;
+    color: rgb(30, 167, 170);
+    text-align: center;
+}
+
+.unauthorized-container h1 {
+    font-size: 40px;
+    font-weight: 400;
+    color: rgb(30, 167, 170);
+    text-align: center;
+}
+
+ .unauthorized-link {
+    border: none;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 4px;
+    background: rgb(30, 167, 170);
+    color: white;
+    cursor: pointer;
+}

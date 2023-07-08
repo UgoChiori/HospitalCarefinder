@@ -62,8 +62,31 @@ const NavigationBar: React.FC<NavbarProps> = ({ signOut, user }) => {
                 <div onClick={() => setShow(!show)} className={`app_navbar_profile ${show ? 'active' : ''}`}>
                   {user && (
                     <div className="app_navbar_profile_flex">
-                      
                       <p>
+        {user.photoUrl && (
+          <img src={user.photoUrl} alt="profile" className="avatar" />
+        )}
+        {user.displayName}
+        <RiArrowDownSFill onClick={() => setToggle(!toggle)} />
+        {toggle && (
+          <ul id="dropdown_menu">
+            <li className="list-drop">
+              <Link to="/profile" onClick={handleLinkClick}>
+                <RxAvatar className="user_icon" />
+                Profile
+              </Link>
+            </li>
+            <li>
+              <Link to="/" onClick={signOut}>
+                <MdLogout className="user_icon" />
+                Logout
+              </Link>
+            </li>
+          </ul>
+        )}
+      </p>
+                      
+                      {/* <p>
                       <img src={user.photoUrl} alt="profile" className="avatar"  />
                         {user.displayName}
                         <RiArrowDownSFill onClick={() => setToggle(!toggle)} />
@@ -83,7 +106,7 @@ const NavigationBar: React.FC<NavbarProps> = ({ signOut, user }) => {
                           </li>
                         </ul>
                       )}
-                      </p>
+                      </p> */}
                     
                     </div>
                   )}

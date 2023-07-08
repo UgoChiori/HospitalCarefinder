@@ -3,15 +3,12 @@
 // import MarkdownIt from "markdown-it";
 // import { useEffect, useState } from "react";
 // import { getAuth, onAuthStateChanged } from "firebase/auth";
-// // import { auth } from "../components/Firebase";
 // import { useNavigate } from "react-router-dom";
 // import { getFirestore, collection, addDoc } from "firebase/firestore";
 // import { initializeApp } from "firebase/app";
 // import { firebaseConfig } from "../components/Firebase";
-// import "./admin.css";
 // import { countries } from "countries-list";
-
-
+// import "./admin.css";
 
 // const app = initializeApp(firebaseConfig);
 // const db = getFirestore(app);
@@ -21,27 +18,24 @@
 
 // const AdminReviewEditor = () => {
 //   const [hospitalName, setHospitalName] = useState("");
-//  const [hospitalImage, setHospitalImage] = useState("");
+//   const [hospitalImage, setHospitalImage] = useState("");
 //   const [hospitalCountry, setHospitalCountry] = useState("");
 //   const [hospitalAddress, setHospitalAddress] = useState("");
 //   const [hospitalState, setHospitalState] = useState("");
 //   const [isAdmin, setIsAdmin] = useState(false);
 //   const navigate = useNavigate();
 
-//   // UseEffect for ADMIN to add new hospital to the database
-//     useEffect(() => {
-//         const unsubscribe = onAuthStateChanged(auth, (user) => {
-//             if (user) {
-//                const isAdminUser = user.email === "ugochiori@gmail.com";
-//                 setIsAdmin(isAdminUser);
-//             } else {
-//                 setIsAdmin(false);
-//             }
-//         });
-//         return () => {
-//             unsubscribe();
-//         };
-//     }, []);
+//   useEffect(() => {
+//     const unsubscribe = onAuthStateChanged(auth, (user) => {
+//       if (user) {
+//         const isAdminUser = user.email === "ugochiori@gmail.com"; // Replace with your own admin check
+//         setIsAdmin(isAdminUser);
+//       } else {
+//         setIsAdmin(false);
+//       }
+//     });
+//     return () => unsubscribe();
+//   }, []);
 
 //   const handleHospitalSubmit = async () => {
 //     try {
@@ -55,9 +49,8 @@
 
 //       await addDoc(collection(db, "addhospitals"), hospitalData);
 
-//       alert("Hospital added successfully to database!");
+//       alert("Hospital added successfully to the database!");
 
-//       // Reset input fields
 //       setHospitalName("");
 //       setHospitalCountry("");
 //       setHospitalImage("");
@@ -65,97 +58,101 @@
 //       setHospitalState("");
 //       navigate("/admin");
 //     } catch (error) {
-//       console.error("Error adding hospital to database", error);
-//       alert("Error adding hospital to database");
+//       console.error("Error adding hospital to the database", error);
+//       alert("Error adding hospital to the database");
 //     }
 //   };
 
 //   return (
-//    <div>
-//         {isAdmin ? (
-//             <div className="adminpage">
-//                 <h3>Welcome, Admin</h3>
-//                 <div className="admin-review-container">
-//       <div className="review-inputs-container">
-//         <h2 className="review-heading">Add a new hospital</h2>
-//         <div className="review-input">
-//           <label htmlFor="hospitalName">Hospital Name</label>
-//           <input
-//             type="text"
-//             id="hospitalName"
-//             value={hospitalName}
-//             onChange={(e) => setHospitalName(e.target.value)}
-//           />
+//     <div>
+//       {isAdmin ? (
+//         <div className="admin-page">
+//           <h3>Welcome, Admin!</h3>
+//           <div className="admin-review-container">
+        //     <div className="review-inputs-container">
+        //       <h2 className="review-heading">Add a new hospital</h2>
+        //       <div className="review-input">
+        //         <label htmlFor="hospitalName">Hospital Name</label>
+        //         <input
+        //           type="text"
+        //           id="hospitalName"
+        //           value={hospitalName}
+        //           onChange={(e) => setHospitalName(e.target.value)}
+        //         />
+        //       </div>
+        //               <div className="review-input">
+        //   <label htmlFor="hospitalCountry">Hospital Country</label>
+        //    <select
+        //     id="hospitalCountry"
+        //     value={hospitalCountry}
+        //     onChange={(e) => setHospitalCountry(e.target.value)}
+        //   >
+        //     <option value="">Select Country</option>
+        //      {Object.keys(countries).map((key) => (
+        //        <option key={key} value={key}>
+        //          {countries[key as keyof typeof countries].name}
+        //       </option>
+        //     ))}
+        //  </select>
+        // </div>
+        //       <div className="review-input">
+        //         <label htmlFor="hospitalImage">Hospital Image</label>
+        //         <input
+        //           type="file"
+        //           id="hospitalImage"
+        //           accept="image/*"
+        //           onChange={(e) => {
+        //             const file = e.target.files?.[0];
+        //             if (file) {
+        //               const reader = new FileReader();
+        //               reader.onloadend = () => {
+        //                 setHospitalImage(reader.result as string);
+        //               };
+        //               reader.readAsDataURL(file);
+        //             }
+        //           }}
+        //         />
+        //       </div>
+        //       <div className="review-input">
+        //         <label htmlFor="hospitalAddress">Hospital Address</label>
+        //         <MdEditor
+        //           id="hospitalAddress"
+        //           value={hospitalAddress}
+        //           onChange={({ text }) => setHospitalAddress(text)}
+        //           renderHTML={(text) => mdParser.render(text)}
+        //           style={{ height: "200px" }}
+        //         />
+        //       </div>
+        //       <div className="review-input">
+        //         <label htmlFor="hospitalState">Hospital State</label>
+        //         <input
+        //           type="text"
+        //           id="hospitalState"
+        //           value={hospitalState}
+        //           onChange={(e) => setHospitalState(e.target.value)}
+        //         />
+        //       </div>
+        //       <button
+        //         id="submit-review-btn"
+        //         onClick={handleHospitalSubmit}
+        //       >
+        //         Submit
+        //       </button>
+        //     </div>
+//           </div>
 //         </div>
-//         <div className="review-input">
-//           <label htmlFor="hospitalCountry">Hospital Country</label>
-//           <select
-//             id="hospitalCountry"
-//             value={hospitalCountry}
-//             onChange={(e) => setHospitalCountry(e.target.value)}
-//           >
-//             <option value="">Select Country</option>
-//             {Object.keys(countries).map((key) => (
-//               <option key={key} value={key}>
-//                 {countries[key as keyof typeof countries].name}
-//               </option>
-//             ))}
-//           </select>
+//       ) : (
+//         <div className="unauthorized-access">
+//           <h2>Unauthorized Access</h2>
+//           <p>You must be logged in as an admin to access this page.</p>
 //         </div>
-//         <div className="review-input">
-//           <label htmlFor="hospitalImage">Hospital Image</label>
-//           <input
-//             type="file"
-//             id="hospitalImage"
-//             accept="image/*"
-//             onChange={(e) => {
-//               const file = e.target.files?.[0];
-//               if (file) {
-//                 const reader = new FileReader();
-//                 reader.onloadend = () => {
-//                   setHospitalImage(reader.result as string);
-//                 };
-//                 reader.readAsDataURL(file);
-//               }
-//             }}
-//           />
-//         </div>
-
-//         <div className="review-input">
-//           <label htmlFor="hospitalAddress">Hospital Address</label>
-//           <MdEditor
-//             id="hospitalAddress"
-//             value={hospitalAddress}
-//             onChange={({ text }) => setHospitalAddress(text)}
-//             renderHTML={(text) => mdParser.render(text)}
-//             style={{ height: "200px" }}
-//           />
-//         </div>
-//         <div className="review-input">
-//           <label htmlFor="hospitalState">Hospital State</label>
-//           <input
-//             type="text"
-//             id="hospitalState"
-//             value={hospitalState}
-//             onChange={(e) => setHospitalState(e.target.value)}
-//           />
-//         </div>
-//         <button id="submit-review-btn" onClick={handleHospitalSubmit}>
-//           Submit
-//         </button>
-//       </div>
-//     </div>
-//             </div>
-//         ) : (
-//             <div className="unauthorized access">
-//                 <h1>Unauthorized Access</h1>
-//             </div>
-//         )}
+//       )}
 //     </div>
 //   );
 // };
 
 // export default AdminReviewEditor;
+
 
 
 import MdEditor from "react-markdown-editor-lite";
@@ -188,7 +185,7 @@ const AdminReviewEditor = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        const isAdminUser = user.email === "ugochiori@gmail.com"; // Replace with your own admin check
+        const isAdminUser = user.email === "ugochiori@gmail.com"; 
         setIsAdmin(isAdminUser);
       } else {
         setIsAdmin(false);
@@ -199,8 +196,14 @@ const AdminReviewEditor = () => {
 
   const handleHospitalSubmit = async () => {
     try {
+      if (!isAdmin) {
+        // Redirects non-admin users to a different page
+        navigate("/unauthorized");
+        return;
+      }
+
       const hospitalData = {
-        " Name": hospitalName,
+        Name: hospitalName,
         Country: hospitalCountry,
         Image: hospitalImage,
         Address: hospitalAddress,
@@ -223,12 +226,19 @@ const AdminReviewEditor = () => {
     }
   };
 
+  if (!isAdmin) {
+    // Redirects non-admin users to a "/unauthorized" page
+    navigate("/unauthorized");
+    return null;
+  }
+
   return (
     <div>
       {isAdmin ? (
         <div className="admin-page">
           <h3>Welcome, Admin!</h3>
           <div className="admin-review-container">
+            {/* ... rest of the code */}
             <div className="review-inputs-container">
               <h2 className="review-heading">Add a new hospital</h2>
               <div className="review-input">
@@ -248,7 +258,7 @@ const AdminReviewEditor = () => {
             onChange={(e) => setHospitalCountry(e.target.value)}
           >
             <option value="">Select Country</option>
-             {Object.keys(countries).map((key) => ( 
+             {Object.keys(countries).map((key) => (
                <option key={key} value={key}>
                  {countries[key as keyof typeof countries].name}
               </option>
@@ -299,6 +309,8 @@ const AdminReviewEditor = () => {
                 Submit
               </button>
             </div>
+            
+            
           </div>
         </div>
       ) : (
