@@ -74,7 +74,7 @@ Once you have the Hospital Carefinder application up and running, you can perfor
 
 Hospital Carefinder includes unit and component tests to ensure the reliability and correctness of its functionalities. To run the tests, use the following command:
 
-shell
+
 npm run test
 
 
