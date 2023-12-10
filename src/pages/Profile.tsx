@@ -3,6 +3,7 @@ import { auth } from "../components/Firebase";
 import "./profile.css";
 import HospitalCard from "../hospital/HospitalCard";
 
+
 const Profile = (details: any) => {
   const [user, setUser] = useState<any>(null);
   const [savedHospitals, setSavedHospitals] = useState<any[]>([]);
@@ -33,6 +34,8 @@ const Profile = (details: any) => {
       unsubscribe();
     };
   }, []);
+
+  
 
   const handleProfilePictureUpload = (
     e: React.ChangeEvent<HTMLInputElement>
@@ -108,5 +111,6 @@ const Profile = (details: any) => {
     </div>
   );
 };
+
 
 export default Profile;
